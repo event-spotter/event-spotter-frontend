@@ -8,6 +8,7 @@ function SignupPage() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState(null);
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -16,21 +17,33 @@ function SignupPage() {
   const handleName = (e) => setName(e.target.value);
   const handleUsername = (e) => setUsername(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
+  const handleImage = (e) => {const file = e.target.files[0];
+    setImage(file);
+  };
   const handlePassword = (e) => setPassword(e.target.value);
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    const requestBody = { name, username, email, password };
-
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+  
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("image", image);
+  
+    try {
+      const response = await axios.post(`${API_URL}/auth/signup`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+  
+      navigate("/login");
+    } catch (error) {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    }
   };
 
   return (
@@ -91,6 +104,21 @@ function SignupPage() {
           onChange={handleEmail}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
+        />
+
+        <label
+          htmlFor="image"
+          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+        >
+          Image
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          id="image"
+          onChange={handleImage}
+          className="border rounded p-2 w-full mb-6"
         />
 
         <label
