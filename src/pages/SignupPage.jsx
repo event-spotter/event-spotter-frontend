@@ -6,7 +6,6 @@ const API_URL = "http://localhost:5005";
 
 function SignupPage() {
   const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState(null);
   const [password, setPassword] = useState("");
@@ -15,7 +14,6 @@ function SignupPage() {
   const navigate = useNavigate();
 
   const handleName = (e) => setName(e.target.value);
-  const handleUsername = (e) => setUsername(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handleImage = (e) => {const file = e.target.files[0];
     setImage(file);
@@ -27,7 +25,6 @@ function SignupPage() {
   
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
     formData.append("image", image);
@@ -70,22 +67,6 @@ function SignupPage() {
           id="name"
           value={name}
           onChange={handleName}
-          className="border rounded p-2 w-full mb-6"
-          autoComplete="off"
-        />
-
-        <label
-          htmlFor="username"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
-          Username
-        </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={handleUsername}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
         />

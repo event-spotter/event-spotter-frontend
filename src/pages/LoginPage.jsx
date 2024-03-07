@@ -7,7 +7,6 @@ const API_URL = "http://localhost:5005";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -16,12 +15,11 @@ function LoginPage() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
-  const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, username, password };
+    const requestBody = { email, password };
 
     axios
       .post(`${API_URL}/auth/login`, requestBody)
@@ -62,22 +60,6 @@ function LoginPage() {
           id="email"
           value={email}
           onChange={handleEmail}
-          className="border rounded p-2 w-full mb-6"
-          autoComplete="off"
-        />
-
-        <label
-          htmlFor="username"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
-          Username
-        </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={handleUsername}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
         />
