@@ -1,21 +1,41 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import BackgroundImage from "../assets/dashboard_background.jpg";
-
-const API_URL = "http://localhost:5005";
+import DashboardCarousel from "../components/DashboardCarousel"
 
 function Dashboard() {
+
+  const API_URL = "http://localhost:5005";
+
+    const [events, setEvents] = useState([]);
+
+    const getAllEvents = () => {
+      axios
+        .get(`${API_URL}/api/events`)
+        .then((response) => {
+          setEvents(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+  
+    useEffect(() => {
+      getAllEvents();
+    }, []);
+
   return (
-    <div className="relative">
-    <div className="relative inset-0 flex items-center justify-center">
+    <>
+
+    <div className="relative min-h-screen flex items-center justify-center">
       <img
         src={BackgroundImage}
-        className="object-cover w-full h-96"
+        className="w-full h-1/6 object-cover"
         alt="Background"
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
+      <div className="absolute flex flex-col items-center justify-center text-center text-white">
         <div className="text-2xl mb-8">Are you ready?</div>
         <div className="text-lg leading-relaxed">Have the joy</div>
       </div>
@@ -30,8 +50,11 @@ function Dashboard() {
           </p>
         </div>
       </section>
+
+<DashboardCarousel events={events} /> 
+      
    
-    </div>
+    </>
   );
 }
 

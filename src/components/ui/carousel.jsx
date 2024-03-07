@@ -3,8 +3,8 @@ import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "../../lib/utils"
+import { Button } from "./button"
 
 const CarouselContext = React.createContext(null)
 
@@ -117,7 +117,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    (<div ref={carouselRef} className="overflow-hidden">
+    (<div ref={carouselRef} className="overflow-hidden mx-auto">
       <div
         ref={ref}
         className={cn(
@@ -140,7 +140,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
+        "min-w-7 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
