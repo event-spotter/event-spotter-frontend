@@ -24,13 +24,14 @@ function LoginPage() {
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
+        console.log("JWT token", response?.data?.authToken);
 
-        storeToken(response.data.authToken);
+        storeToken(response?.data?.authToken);
         authenticateUser();
         navigate("/");
       })
       .catch((error) => {
+        console.error("Login error:", error.response.status, error.response.data)
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
