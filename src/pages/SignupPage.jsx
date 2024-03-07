@@ -23,20 +23,18 @@ function SignupPage() {
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
   
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("image", image);
-  
+    // const formData = new FormData();
+    // formData.append("name", name);
+    // formData.append("email", email);
+    // formData.append("password", password);
+    // formData.append("image", image);
+    const formData = {name, email, password, image}
+
+    console.log("form Data", formData)
     try {
-      const response = await axios.post(`${API_URL}/auth/signup`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(`${API_URL}/auth/signup`, formData);
   
-      navigate("/login");
+      navigate("/auth/login");
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
