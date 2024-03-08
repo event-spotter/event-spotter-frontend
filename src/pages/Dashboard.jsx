@@ -1,8 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import BackgroundImage from "../assets/dashboard_background.jpg";
+ import BackgroundImage from "../assets/dashboard_background.jpg";
 import DashboardCarousel from "../components/DashboardCarousel"
 
 function Dashboard() {
