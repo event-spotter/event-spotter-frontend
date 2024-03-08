@@ -69,8 +69,8 @@ export default function Example() {
                         key={item.name}
                         className={classNames(
                           location.pathname === item.href
-                            ? "bg-sky-900 text-white"
-                            : "text-sky-900 hover:bg-sky-900 hover:text-white",
+                            ? "bg-sky-800 text-white"
+                            : "text-sky-800 hover:bg-sky-600 hover:text-white",
                           "rounded-md px-5 py-2 text-sm font-extrabold  font-sans "
                         )}
                         onClick={item.name === 'Logout'? logOutUser : undefined}
@@ -165,7 +165,7 @@ export default function Example() {
                   className={classNames(
                     item.current
                       ? "bg-gray-900 text-white "
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      : "text-gray-300 hover:bg-gray-0 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
