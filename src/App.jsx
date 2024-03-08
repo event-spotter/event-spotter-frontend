@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/Navbar";
+import EventDetails from "./pages/EventDetailsPage";
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/events/:eventId" element={<EventDetails />}></Route>
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/events" element={<EventListPage />} />
