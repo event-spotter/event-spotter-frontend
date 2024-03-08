@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:5005";
+// const API_URL = import.meta.env.VITE_API_URL;
 
 function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -20,14 +21,25 @@ function SignupPage() {
   };
   const handlePassword = (e) => setPassword(e.target.value);
 
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+ 
+   axios.post(`${API_URL}/api/upload`, uploadData)
+      .then(response => {
+        console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImage(response.data.imageUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
   
-    // const formData = new FormData();
-    // formData.append("name", name);
-    // formData.append("email", email);
-    // formData.append("password", password);
-    // formData.append("image", image);
     const formData = {name, email, password, image}
 
     console.log("form Data", formData)
@@ -91,14 +103,11 @@ function SignupPage() {
         >
           Image
         </label>
-        <input
-          type="file"
-          accept="image/*"
-          name="image"
-          id="image"
-          onChange={handleImage}
-          className="border rounded p-2 w-full mb-6"
-        />
+        <input 
+        className="border rounded p-2 w-full mb-6"
+        type="file" 
+        onChange={(e) => handleFileUpload(e)} />
+  
 
         <label
           htmlFor="password"
