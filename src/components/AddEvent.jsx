@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
@@ -9,13 +9,42 @@ function AddEvent() {
 
   const navigate = useNavigate();
 
+  const [artists, setArtists] = useState([]);
+  const [selectedArtist, setSelectedArtist] = useState("");
+
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState([]);
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState(null)
+
+  useEffect(() => {
+    axios.get(`${API_URL}/api/artists`)
+      .then(response => {
+        setArtists(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching artists:", error);
+      });
+  }, []);
+
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+ 
+   axios.post(`${API_URL}/api/upload`, uploadData)
+      .then(response => {
+        console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImage(response.data.imageUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +52,9 @@ function AddEvent() {
     const requestBody = {
       image,
       title,
-      artist,
+      artist: selectedArtist,
       description,
-      category,
+      category: Array.isArray(category) ? category : [category],
       location,
       date,
     };
@@ -38,7 +67,6 @@ function AddEvent() {
         console.log(response.data);
         setImage("");
         setTitle("");
-        setArtist("");
         setDescription("");
         setCategory([]);
         setLocation("");
@@ -48,28 +76,19 @@ function AddEvent() {
       .catch((error) => console.log(error));
   };
 
+
+
   return (
     <div className="flex items-center justify-center h-screen">
       <form
         onSubmit={handleSubmit}
-        className=" bg-sky-100 shadow-lg border-solid border rounded-xl w-3/5 h-94 flex-col p-4"
+        className=" bg-sky-100 shadow-lg border-solid border rounded-xl w-3/5 h-4/5 flex-col p-4"
       >
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Image: </label>
-          <input
-            className="text-sm w-full ml-4"
-            type="url"
-            name="image"
-            placeholder="Event Image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </div>
 
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Title: </label>
+        <div className="flex justify-between p-4">
+          <label className="text-md">Title*: </label>
           <input
-            className="text-sm w-full ml-4"
+            className="text-md w-full ml-4"
             type="text"
             name="title"
             required
@@ -79,23 +98,28 @@ function AddEvent() {
           />
         </div>
 
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Artist: </label>
-          <input
-            className="text-sm w-full ml-4"
-            type="text"
+        <div className="flex justify-between p-4">
+          <label className="text-md">Artist: </label>
+          <select
+            className="text-md w-full ml-4"
             name="artist"
             required
-            placeholder="Pearl Jam"
-            value={artist}
-            onChange={(e) => setArtist(e.target.value)}
-          />
+            value={selectedArtist}
+            onChange={(e) => setSelectedArtist(e.target.value)}
+          >
+              <option value="" disabled>Select an artist</option>
+            {artists.map(artist => (
+              <option key={artist._id} value={artist._id}>
+                {artist.name}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Description: </label>
+        <div className="flex justify-between p-4">
+          <label className="text-md">Description: </label>
           <input
-            className="text-sm w-full ml-4"
+            className="text-md w-full ml-4"
             type="text"
             name="description"
             required
@@ -105,26 +129,26 @@ function AddEvent() {
           />
         </div>
 
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Location: </label>
+        <div className="flex justify-between p-4">
+          <label className="text-md">Location*: </label>
           <input
-            className="text-sm w-full ml-4"
+            className="text-md w-full ml-4"
             type="text"
             name="location"
             required
             placeholder="ABC"
             value={location}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
           />
           </div>
 
-        <div className="flex justify-between p-1">
-          <label className="text-sm">Category:</label>
+
+        <div className="flex justify-between p-4">
+          <label className="text-md">Category:</label>
 
           <select
-            className="text-sm w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
-            type="text"
-            name="category"
+            className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
+             name="category"
             required
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -135,8 +159,17 @@ function AddEvent() {
           </select>
         </div>
 
-          <div className="flex justify-between gap-8 p-1">
-            <label className="text-sm">Date: </label>
+        <div className="flex justify-between p-4">
+          <label className="text-md">Image: </label>
+          <input
+            className="text-md w-full ml-4"
+            type="file"
+            onChange={(e) => handleFileUpload(e)}
+          />
+        </div>
+
+          <div className="flex justify-between p-5">
+            <label className="text-md">Date: </label>
             <DatePicker
               selected={date}
               onSelect={(newDate) => setDate(newDate)}
