@@ -43,7 +43,7 @@ export default function Example() {
   if (isLoading) return <p>Loading ...</p>;
 
   return (
-    <Disclosure as="nav" className="bg-sky-100">
+    <Disclosure as="nav" className="bg-sky-900">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
@@ -69,8 +69,8 @@ export default function Example() {
                         key={item.name}
                         className={classNames(
                           location.pathname === item.href
-                            ? "bg-sky-800 text-white"
-                            : "text-sky-800 hover:bg-sky-600 hover:text-white",
+                            ? "bg-red-900 text-yellow-400"
+                            : "text-yellow-500 hover:bg-red-800 hover:text-yellow-300",
                           "rounded-md px-5 py-2 text-sm font-extrabold  font-sans "
                         )}
                         onClick={item.name === 'Logout'? logOutUser : undefined}

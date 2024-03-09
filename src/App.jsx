@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/Navbar";
 import EventDetails from "./pages/EventDetailsPage";
+import EditEventPage from "./pages/EditEventPage";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/events" element={<EventListPage />} />
         <Route path="/artists" element={<ArtistListPage />} />
         <Route path="/addEvent" element={<AddEvent />} />
+        <Route path="/events/edit/:eventId" element={<EditEventPage />} />
       </Routes>
     </>
   );

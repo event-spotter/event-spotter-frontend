@@ -41,7 +41,7 @@ function Dashboard() {
         <div className="text-5xl leading-relaxed">Have the joy</div>
       </div>
       </div>
-      <section className="bg-sky-100 py-6 text-center">
+      <section className="bg-sky-900 py-6 text-center">
         <div>
           <h2 className="text-3xl font-bold mb-4">
             Find Events Waiting for You

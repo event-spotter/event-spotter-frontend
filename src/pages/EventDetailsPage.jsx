@@ -87,7 +87,7 @@ const EventDetails = () => {
               <Link to={`/events/edit/${eventId}`}>
                 <button
                   className="bg-[#0369a1] text-white cursor-pointer font-semibold text-[1em] ml-0 mr-[30px] mt-[30px] mb-0 p-[1em] rounded-md border-[none];
-  font-family: inherit"
+                            font-family: inherit"
                 >
                   Edit Event
                 </button>
