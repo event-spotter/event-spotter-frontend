@@ -40,21 +40,21 @@ const EventDetails = () => {
                   <h1 className="text-[2.95em] tracking-wider m-0">{event.title}</h1>{" "}
                 </div>
                 <div>
-                  {" "}
+                  {/* {" "}
                   <h1 className="text-[2.65em] m-0">
                     {event.artist.name}
-                  </h1>{" "}
+                  </h1>{" "} */}
                 </div>
               </div>
-              <p className="tracking-wide">{event.description}</p>
+              {/* <p className="tracking-wide">{event.description}</p> */}
             </div>
             <div className="flex justify-between bg-[#d0e4ea] mt-5 pt-5 pb-0 px-5 rounded-[10px]">
               <div className="basis-[70%]">
                 <h5 className="text-[large] tracking-wide font-semibold leading-[1.2] text-[color:var(--bs-heading-color)] mt-0 mb-2">
-                  Title
+                  Artist
                 </h5>
                 <div>
-                  <p className="mt-0 mb-4"> {event.title} </p>
+                  <p className="mt-0 mb-4"> {event.artist.name} </p>
                 </div>
                 <h5 className="text-[large] tracking-wide font-semibold leading-[1.2] text-[color:var(--bs-heading-color)] mt-0 mb-2">
                   Description
