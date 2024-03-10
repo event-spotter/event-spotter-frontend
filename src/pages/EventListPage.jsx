@@ -42,19 +42,19 @@ function EventListPage() {
   const renderEventCard = (event, index) => (
     <div key={`${event.id}-${index}`} className="flex flex-col items-center">
       <Card className="w-full h-full">
-        <CardContent className="flex flex-col justify-start items-start gap-2">
+        <CardContent className="flex flex-col justify-start items-center gap-2">
           <img
+          className="h-56 w-full rounded-lg object-cover p-3"
             src={event.image}
-            className="h-56 w-full rounded-md object-cover"
             alt={event.title}
           />
-          <div className="flex flex-col justify-center items-center text-center">
-            <span className="text-xl font-semibold">{event.title}</span>
+          <div className="flex flex-col text-center">
+            <span className="text-xl font-semibold ">{event.title}</span>
             <span className="text-lg">{event.category}</span>
     
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between items-center">
+        <CardFooter className="flex  justify-center items-center">
           <div className="flex">
             <Link to={`/api/events/${event._id}`}>
               <Button variant="button" className="mx-2">See details</Button>
