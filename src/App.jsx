@@ -1,5 +1,10 @@
 import "./App.css";
-import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import EventListPage from "./pages/EventListPage";
 import ArtistListPage from "./pages/ArtistListPage";
 import AddEvent from "./components/AddEvent";
@@ -11,13 +16,12 @@ import NavBar from "./components/Navbar";
 import EventDetails from "./pages/EventDetailsPage";
 import EditEventPage from "./pages/EditEventPage";
 import AddArtist from "./components/AddArtist";
-
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-   <NavBar />
+      <NavBar />
 
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -32,6 +36,8 @@ function App() {
         <Route path="/addArtist" element={<AddArtist />} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }
