@@ -26,9 +26,11 @@ function EventListPage() {
     getAllEvents();
   }, []);
 
+  const storedToken = localStorage.getItem("authToken");
   const deleteEvent = (eventId) => {
     axios
-      .delete(`${API_URL}/api/events/${eventId}`)
+      .delete(`${API_URL}/api/events/${eventId}`,
+      {headers: {Authorization: `Bearer ${storedToken}` }})
       .then((response) => {
         const newEvent = events.filter((eventObj) => eventObj._id !== eventId);
         setEvents(newEvent);

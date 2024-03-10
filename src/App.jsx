@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import NavBar from "./components/Navbar";
 import EventDetails from "./pages/EventDetailsPage";
 import EditEventPage from "./pages/EditEventPage";
+import AddArtist from "./components/AddArtist";
 
 
 
@@ -26,8 +27,9 @@ function App() {
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/events" element={<EventListPage />} />
-        <Route path="/artists" element={<ArtistListPage />} />
         <Route path="/addEvent" element={<AddEvent />} />
+        <Route path="/artists" element={<ArtistListPage />} />
+        <Route path="/addArtist" element={<AddArtist />} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
       </Routes>
     </>

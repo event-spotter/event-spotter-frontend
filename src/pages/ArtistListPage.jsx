@@ -26,13 +26,15 @@ function ArtistListPage() {
     getAllArtists();
   }, []);
 
+  const storedToken = localStorage.getItem("authToken");
   const deleteArtist = (artistId) => {
     axios
-      .delete(`${API_URL}/api/artists/${artistId}`)
+      .delete(`${API_URL}/api/artists/${artistId}`,
+      {headers: {Authorization: `Bearer ${storedToken}` }})
       .then((response) => {
         const newArtist = artists.filter((artistObj) => artistObj._id !== artistId);
-        setArtists(newartist);
-        setFilteredArtists(newartist);
+        setArtists(newArtist);
+        setFilteredArtists(newArtist);
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +63,7 @@ function ArtistListPage() {
             </Link>
             <Button variant="button"
               onClick={() => {
-                deleteartist(artist._id);
+                deleteArtist(artist._id);
               }}
             >
               <FaTrashCan className="text-md" />

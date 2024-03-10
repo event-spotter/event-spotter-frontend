@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import DatePicker from "../components/DatePicker";
+import { Link } from "react-router-dom";
 
 function AddEvent() {
   const API_URL = "http://localhost:5005";
@@ -19,8 +20,6 @@ function AddEvent() {
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(null);
-
-
 
   useEffect(() => {
     axios
@@ -50,6 +49,15 @@ function AddEvent() {
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
+
+  const handleArtistSelection = (value) => {
+    if (value === "new") {
+      navigate("/addartist");
+    } else {
+      setSelectedArtist(value);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -62,11 +70,12 @@ function AddEvent() {
       location,
       date,
     };
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/api/events`, requestBody,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
+      .post(`${API_URL}/api/events`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         console.log(response.data);
         setImage("");
@@ -115,18 +124,19 @@ function AddEvent() {
         </div>
 
         <div className="flex p-2">
-          <div className="flex-col p-2"  style={{ flexBasis: '48%' }}>
+          <div className="flex-col p-2" style={{ flexBasis: "48%" }}>
             <label className="text-md">Artist:</label>
             <select
               className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               name="artist"
               required
               value={selectedArtist}
-              onChange={(e) => setSelectedArtist(e.target.value)}
+              onChange={(e) => handleArtistSelection(e.target.value)}
             >
               <option value="" disabled>
                 Select an artist
               </option>
+              <option value="new">Create new artist</option>
               {artists.map((artist) => (
                 <option key={artist._id} value={artist._id}>
                   {artist.name}
@@ -135,7 +145,7 @@ function AddEvent() {
             </select>
           </div>
 
-          <div className="flex-col p-2"  style={{ flexBasis: '50%' }}>
+          <div className="flex-col p-2" style={{ flexBasis: "50%" }}>
             <label className="text-md">Category:</label>
             <select
               className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
@@ -164,23 +174,23 @@ function AddEvent() {
           />
         </div>
 
-       <div className="flex p-2 flex-col md:flex-row">
-        <div className="flex-col p-2 flex-grow">
-          <label className="text-md w-full">Date: </label>
-          <DatePicker
-            selected={date}
-            onSelect={(newDate) => setDate(newDate)}
-          />
-        </div>
+        <div className="flex p-2 flex-col md:flex-row">
+          <div className="flex-col p-2 flex-grow">
+            <label className="text-md w-full">Date: </label>
+            <DatePicker
+              selected={date}
+              onSelect={(newDate) => setDate(newDate)}
+            />
+          </div>
 
-        <div className="flex-col p-2">
-          <label className="text-md">Image: </label>
-          <input
-            className="text-md w-full object-contain"
-            type="file"
-            onChange={(e) => handleFileUpload(e)}
-          />
-        </div>
+          <div className="flex-col p-2">
+            <label className="text-md">Image: </label>
+            <input
+              className="text-md w-full object-contain"
+              type="file"
+              onChange={(e) => handleFileUpload(e)}
+            />
+          </div>
         </div>
 
         <div className="flex justify-center py-3">
