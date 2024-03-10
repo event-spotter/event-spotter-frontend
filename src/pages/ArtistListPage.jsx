@@ -49,8 +49,8 @@ function ArtistListPage() {
             alt={artist.title}
           />
           <div className="flex flex-col text-center">
-            <span className="text-xl font-semibold ">{artist.title}</span>
-            <span className="text-lg">{artist.category}</span>
+            <span className="text-xl font-semibold ">{artist.name}</span>
+            <span className="text-lg">{artist.genre}</span>
     
           </div>
         </CardContent>
