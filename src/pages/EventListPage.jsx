@@ -56,7 +56,7 @@ function EventListPage() {
         </CardContent>
         <CardFooter className="flex  justify-center items-center">
           <div className="flex">
-            <Link to={`/api/events/${event._id}`}>
+            <Link to={`/events/${event._id}`}>
               <Button variant="button" className="mx-2">See details</Button>
             </Link>
             <Button variant="button"
@@ -95,18 +95,8 @@ function EventListPage() {
         </Card>
       </div>
 
-      {events.map((event, index) => {
-        if (index < 3) {
-          return renderEventCard(event, index);
-        }
-        return null;
-      })}
+      {events.map((event, index) => renderEventCard(event, index))}
 
-      <div className="md:col-span-3">
-        {events
-          .slice(3)
-          .map((event, index) => renderEventCard(event, index + 3))}
-      </div>
     </div>
     </>
   );

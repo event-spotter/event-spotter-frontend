@@ -16,9 +16,11 @@ function AddEvent() {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(null);
+
+
 
   useEffect(() => {
     axios
@@ -56,24 +58,24 @@ function AddEvent() {
       title,
       artist: selectedArtist,
       description,
-      category: Array.isArray(category) ? category : [category],
+      category: category,
       location,
       date,
     };
-    // const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem('authToken');
 
     axios
-      .post(`${API_URL}/api/events`, requestBody)
-      // { headers: { Authorization: `Bearer ${storedToken}` } }
+      .post(`${API_URL}/api/events`, requestBody,
+      { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         console.log(response.data);
         setImage("");
         setTitle("");
         setDescription("");
-        setCategory([]);
+        setCategory("");
         setLocation("");
         setDate(null);
-        navigate("/api/events");
+        navigate("/events");
       })
       .catch((error) => console.log(error));
   };
@@ -174,7 +176,7 @@ function AddEvent() {
         <div className="flex-col p-2">
           <label className="text-md">Image: </label>
           <input
-            className="text-md w-full"
+            className="text-md w-full object-contain"
             type="file"
             onChange={(e) => handleFileUpload(e)}
           />
