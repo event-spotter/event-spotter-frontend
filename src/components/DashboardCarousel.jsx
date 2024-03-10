@@ -1,5 +1,6 @@
 import * as React from "react";
-
+import { Button } from "../components/ui/button";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "../components/ui/card";
 import {
   Carousel,
@@ -9,8 +10,10 @@ import {
   CarouselPrevious,
 } from "../components/ui/carousel";
 
+
 function DashboardCarousel({ events }) {
   return (
+    <>
     <div className="flex items-center justify-center">
       <Carousel className="w-full max-w-4xl h-full mt-8 mb-8">
         <CarouselContent className="-ml-1 md:-ml-4">
@@ -41,6 +44,13 @@ function DashboardCarousel({ events }) {
         <CarouselNext />
       </Carousel>
     </div>
+
+<div className="flex flex-col justify-center items-center text-center mb-6">
+<Link to={`/events`}>
+  <Button variant="button" className="mx-2">See all Events</Button>
+</Link>
+</div>
+</>
   );
 }
 

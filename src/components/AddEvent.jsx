@@ -56,7 +56,7 @@ function AddEvent() {
     const requestBody = {
       image,
       title,
-      artist: selectedArtist,
+      artist: selectedArtist || null,
       description,
       category: category,
       location,
