@@ -52,7 +52,7 @@ function Dashboard() {
         </div>
       </section>
 
-<DashboardCarousel events={events} /> 
+<DashboardCarousel events={events}/> 
       
    
     </>

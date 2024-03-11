@@ -57,6 +57,7 @@ function ArtistListPage() {
             <div className="flex flex-col text-center">
               <span className="text-xl font-semibold ">{artist.name}</span>
               <span className="text-lg">{artist.genre}</span>
+              <span className="text-lg">{artist.description}</span>
             </div>
           </CardContent>
           <CardFooter className="flex  justify-center items-center">

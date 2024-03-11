@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 function AddArtist() {
   const API_URL = "http://localhost:5005";
 
+  const MAX_DESCRIPTION_LENGTH = 100;
+
   const navigate = useNavigate();
 
   const [image, setImage] = useState("");
@@ -102,7 +104,7 @@ function AddArtist() {
 
 
         <div className="flex-col p-2">
-          <label className="text-md">Description: </label>
+          <label className="text-md">Description (max 100 Characters): </label>
           <textarea
             className="text-md w-full resize-both"
             type="text"
@@ -110,10 +112,23 @@ function AddArtist() {
             required
             placeholder="ABC"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+            onChange={(e) => {
+              const newDescription = e.target.value;
+              if (newDescription.length <= MAX_DESCRIPTION_LENGTH) {
+                setDescription(newDescription);
+              }
+            }}
+            />
+            <p className="text-sm text-gray-500 mt-1">
+            {`${description.length}/${MAX_DESCRIPTION_LENGTH} characters`}
+          </p>
+          {description.length > MAX_DESCRIPTION_LENGTH && (
+            <p className="text-sm text-red-500">
+              Description cannot exceed 100 characters.
+            </p>
+          )}
+          
         </div>
-
         
           <div className="flex-col p-2">
             <label className="text-md">Image: </label>
