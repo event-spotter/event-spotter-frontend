@@ -15,6 +15,9 @@ const EventDetails = () => {
       .then((response) => {
         console.log(response);
         setEvent(response.data);
+        console.log("Raw event date:", event.date);
+console.log("Parsed date:", new Date(event.date));
+console.log("Localized date:", new Date(event.date).toLocaleDateString());
       })
       .catch((e) => {
         console.log(e);
@@ -77,9 +80,9 @@ const EventDetails = () => {
                 <h5 className="text-[large] tracking-wide font-semibold leading-[1.2] text-[color:var(--bs-heading-color)] mt-0 mb-2">
                   Date
                 </h5>
-                <div>
-                  <p className="mt-0 mb-4"> {event.date}</p>
-                </div>
+               
+                <p>{new Date(event.date).toLocaleDateString()}</p>
+                
               </div>
             </div>
 

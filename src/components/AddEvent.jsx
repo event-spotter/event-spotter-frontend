@@ -55,7 +55,10 @@ function AddEvent() {
       })
   };
 
-
+  const handleDateSelection = (selectedDate) => {
+    console.log("Selected Date:", selectedDate);
+    setDate(selectedDate); 
+  };
 
   const handleArtistSelection = (value) => {
     if (value === "new") {
@@ -186,7 +189,7 @@ function AddEvent() {
             <label className="text-md w-full">Date: </label>
             <DatePicker
               selected={date}
-              onSelect={(newDate) => setDate(newDate)}
+              onSelect={handleDateSelection}
             />
           </div>
 
