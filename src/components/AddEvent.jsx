@@ -20,6 +20,7 @@ function AddEvent() {
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
@@ -39,6 +40,8 @@ function AddEvent() {
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
 
+    setLoading(true);
+
     axios
       .post(`${API_URL}/api/upload`, uploadData)
       .then((response) => {
@@ -46,8 +49,12 @@ function AddEvent() {
         // response carries "fileUrl" which we can use to update the state
         setImage(response.data.imageUrl);
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => console.log("Error while uploading the file: ", err))
+      .finally(() => {
+        setLoading(false)
+      })
   };
+
 
 
   const handleArtistSelection = (value) => {
@@ -191,10 +198,11 @@ function AddEvent() {
               onChange={(e) => handleFileUpload(e)}
             />
           </div>
+          {loading && <p>Image is loading...</p>}
         </div>
 
         <div className="flex justify-center py-3">
-          <Button variant="button" size="sm">
+          <Button variant="button" size="sm" disabled={loading}>
             Add
           </Button>
         </div>
