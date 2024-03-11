@@ -11,8 +11,13 @@ import {
   PopoverTrigger,
 } from "../components/ui/popover"
 
-function DatePicker({selected}) {
+function DatePicker({selected, onDateSelect}) {
   const [date, setDate] = React.useState(null);
+
+  const handleDateSelect = (selectedDate) => {
+    setDate(selectedDate);
+    onDateSelect(selectedDate);
+  };
 
   return (
     <Popover>
@@ -32,7 +37,7 @@ function DatePicker({selected}) {
         <Calendar
           mode="single"
           selected={selected}
-          onSelect={setDate}
+          onSelect={handleDateSelect}
           initialFocus
         />
       </PopoverContent>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import DatePicker from "../components/DatePicker";
+import { parseISO, format } from "date-fns";
 
 const EditEventPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -27,12 +28,13 @@ const EditEventPage = () => {
       .get(`${API_URL}/api/events/${eventId}`)
       .then((response) => {
         console.log(response.data);
+        const eventDate = response.data.date ? parseISO(response.data.date) : null;
         setTitle(response.data.title);
         setDescription(response.data.description);
         setImage(response.data.image);
         setLocation(response.data.location);
         setCategory(response.data.category);
-        setDate(response.data.date);
+        setDate(eventDate);
         setSelectedArtist(response.data.artist);
         setIsLoading(false);
       })
@@ -74,6 +76,8 @@ const EditEventPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const formattedDate = date ? format(date, "yyyy-MM-dd") : null;
+
     const newDetails = {
       image,
       title,
@@ -81,7 +85,7 @@ const EditEventPage = () => {
       description,
       category,
       location,
-      date,
+      date: formattedDate,
     };
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {

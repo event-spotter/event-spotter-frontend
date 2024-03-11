@@ -60,18 +60,20 @@ function EventListPage() {
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
       key={`${event.id}-${index}`}
-      className="flex flex-col items-center my-8"
+      className="flex flex-col items-center my-8 mx-10"
     >
       <Card className={`w-64 md:w-80 ${isNewEvent ? "h-80" : "h-full"}`}>
         <CardContent className="flex flex-col justify-start items-center gap-2">
           {isNewEvent ? (
-            <div className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200">
-              {/* Placeholder content for the "Create New Event" card */}
+            <Link
+              to="/addEvent"
+              className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200"
+            >
               <span className="text-4xl text-gray-500">+</span>
-            </div>
+            </Link>
           ) : (
             <img
-              className="h-32 md:h-40 w-full rounded-lg object-cover p-3"
+              className="h-32 md:h-40 w-full rounded-lg object-contain pt-2"
               src={event.image}
               alt={event.title}
             />
@@ -87,7 +89,7 @@ function EventListPage() {
             )}
           </div>
         </CardContent>
-        <CardFooter className="flex  justify-center items-center">
+        <CardFooter className="flex justify-center items-center">
           <div className="flex">
             {isNewEvent ? (
               <Link to="/addEvent">
@@ -170,7 +172,7 @@ function EventListPage() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 mx-48">
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
         {filteredEvents.map((event, index) =>
           renderEventCard(event, index, index === 0)
         )}
