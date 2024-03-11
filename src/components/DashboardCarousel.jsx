@@ -15,12 +15,12 @@ function DashboardCarousel({ events }) {
   return (
     <>
     <div className="flex items-center justify-center">
-      <Carousel className="w-full max-w-4xl h-full mt-8 mb-8">
-        <CarouselContent className="-ml-1 md:-ml-4">
+      <Carousel className="w-full max-w-4xl h-full m-16">
+        <CarouselContent>
           {events.slice(0, 5).map((event, index) => (
             <CarouselItem
               key={event.id || index}
-              className="pl-2 md:basis-1/2 lg:basis-2/4"
+              className="pl-2 sm:w-1/2 md:basis-1/3 lg:w-2/4"
             >
               <div className="p-1">
                 <Card className="h-full w-full bg-sky-50">
@@ -34,6 +34,11 @@ function DashboardCarousel({ events }) {
                     <span className="text-md font-semibold">
                       {event.location}
                     </span>
+                    <Link to={`/events/${event._id}`}>
+                  <Button variant="button" className="mx-2">
+                    See details
+                  </Button>
+                </Link>
                   </CardContent>
                 </Card>
               </div>

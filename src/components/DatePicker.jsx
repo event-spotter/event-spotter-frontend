@@ -1,22 +1,23 @@
-import * as React from "react"
-import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
+import * as React from "react";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
 
-import { cn } from "../lib/utils"
-import { Button } from "../components/ui/button"
-import { Calendar } from "../components/ui/calendar"
+import { cn } from "../lib/utils";
+import { Button } from "../components/ui/button";
+import { Calendar } from "../components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../components/ui/popover"
+} from "../components/ui/popover";
 
-function DatePicker({selected, onDateSelect}) {
+function DatePicker() {
+
   const [date, setDate] = React.useState(null);
 
   const handleDateSelect = (selectedDate) => {
     setDate(selectedDate);
-    onDateSelect(selectedDate);
+  
   };
 
   return (
@@ -36,14 +37,13 @@ function DatePicker({selected, onDateSelect}) {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={selected}
+          selected={date}
           onSelect={handleDateSelect}
           initialFocus
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }
-
 
 export default DatePicker;

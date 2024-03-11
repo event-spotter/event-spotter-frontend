@@ -62,11 +62,11 @@ function ArtistListPage() {
           </CardContent>
           <CardFooter className="flex  justify-center items-center">
             <div className="flex">
-              <Link to={`/artists/${artist._id}`}>
+              {/* <Link to={`/artists/${artist._id}`}>
                 <Button variant="button" className="mx-2">
                   See details
                 </Button>
-              </Link>
+              </Link> */}
               <Button
                 variant="button"
                 onClick={() => {
@@ -86,10 +86,10 @@ function ArtistListPage() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-8">
         {/* Render the "Create New artist" card as the first card */}
-        <div className="flex flex-col items-center">
-          <Card className="w-full h-full">
-            <CardContent className="flex flex-col justify-center items-center text-center">
-              <span className="text-2xl font-semibold">Create New artist</span>
+        <div>
+          <Card className="w-full h-full flex flex-col justify-center items-center text-center">
+            <CardContent className="flex flex-col">
+              <span className="text-2xl font-semibold">Create new artist</span>
               <Link to="/addartist">
                 <Button variant="button" className="mt-4">
                   Create

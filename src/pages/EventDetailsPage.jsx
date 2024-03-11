@@ -21,6 +21,7 @@ const EventDetails = () => {
       });
   }, [eventId]);
 
+
   return (
     <div className="px-[5vw] py-0 mt-[110px]">
       {event === null ? (
@@ -79,8 +80,9 @@ const EventDetails = () => {
                 <h5 className="text-[large] tracking-wide font-semibold leading-[1.2] text-[color:var(--bs-heading-color)] mt-0 mb-2">
                   Date
                 </h5>
-
-                <p>{new Date(event.date).toLocaleDateString()}</p>
+                <div>
+                <p className="mt-0 mb-4">{event.date ? new Date(event.date).toLocaleDateString() : 'N/A'}</p> 
+                </div>
               </div>
             </div>
 
@@ -101,4 +103,4 @@ const EventDetails = () => {
   );
 };
 
-export default EventDetails;
+export default EventDetails

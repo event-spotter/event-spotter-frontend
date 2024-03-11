@@ -41,7 +41,7 @@ function AddEvent() {
     uploadData.append("imageUrl", e.target.files[0]);
 
     setLoading(true);
-
+   
     axios
       .post(`${API_URL}/api/upload`, uploadData)
       .then((response) => {
@@ -55,11 +55,6 @@ function AddEvent() {
       })
   };
 
-  const handleDateSelection = (selectedDate) => {
-    console.log("Selected Date:", selectedDate);
-    setDate(selectedDate); 
-  };
-
   const handleArtistSelection = (value) => {
     if (value === "new") {
       navigate("/addartist");
@@ -68,8 +63,15 @@ function AddEvent() {
     }
   };
 
+  const handleDateChange = (newDate) => {
+    setDate(newDate.toISOString()); 
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formattedDate = date ? new Date(date).toISOString() : new Date().toISOString();
+
 
     const requestBody = {
       image,
@@ -78,10 +80,10 @@ function AddEvent() {
       description,
       category: category || null,
       location,
-      date,
+      date: formattedDate,
     };
     const storedToken = localStorage.getItem("authToken");
-
+    console.log(requestBody);
     axios
       .post(`${API_URL}/api/events`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -189,7 +191,7 @@ function AddEvent() {
             <label className="text-md w-full">Date: </label>
             <DatePicker
               selected={date}
-              onSelect={handleDateSelection}
+              onSelect={(newDate) => setDate(newDate)}
             />
           </div>
 

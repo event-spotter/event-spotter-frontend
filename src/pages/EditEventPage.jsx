@@ -23,18 +23,18 @@ const EditEventPage = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
 
+
   useEffect(() => {
     axios
       .get(`${API_URL}/api/events/${eventId}`)
       .then((response) => {
         console.log(response.data);
-        const eventDate = response.data.date ? parseISO(response.data.date) : null;
         setTitle(response.data.title);
         setDescription(response.data.description);
         setImage(response.data.image);
         setLocation(response.data.location);
         setCategory(response.data.category);
-        setDate(eventDate);
+        setDate(response.data.date);
         setSelectedArtist(response.data.artist);
         setIsLoading(false);
       })
@@ -44,6 +44,7 @@ const EditEventPage = () => {
 
     getArtist();
   }, [eventId]);
+
 
   const getArtist = () => {
     axios
@@ -55,6 +56,7 @@ const EditEventPage = () => {
         console.error("Error fetching artists:", error);
       });
   };
+
 
   const handleFileUpload = (e) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -76,8 +78,6 @@ const EditEventPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formattedDate = date ? format(date, "yyyy-MM-dd") : null;
-
     const newDetails = {
       image,
       title,
@@ -85,7 +85,7 @@ const EditEventPage = () => {
       description,
       category,
       location,
-      date: formattedDate,
+      date,
     };
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {

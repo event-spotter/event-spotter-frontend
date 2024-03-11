@@ -15,7 +15,7 @@ return (
         alt="Background"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-        <Link to={"/events"} className="text-2xl mb-8">Explore Events</Link>
+        <Link to={"/events"} className="font-extrabold  font-sans shadow-md text-2xl mb-8 text-yellow-300 hover:text-red-800">Explore Events</Link>
       </div>
       </div>
 
@@ -26,7 +26,7 @@ return (
         alt="Background"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-        <Link to={"/addEvent"} className="text-2xl mb-8">Create Event</Link>
+        <Link to={"/addEvent"} className="font-extrabold font-sans text-2xl mb-8 hover:text-red-800">Create Event</Link>
       </div>
       </div>
 
@@ -39,7 +39,7 @@ return (
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
       
-        <Link to={"/artists"} className="text-2xl mb-8">Explore Artists</Link>
+        <Link to={"/artists"} className="font-extrabold  font-sans shadow-md text-2xl mb-8 text-yellow-300 hover:text-red-800">Explore Artists</Link>
       
       </div>
       </div>
