@@ -92,7 +92,7 @@ function LoginPage() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p className="mt-10 mb-2">Don&apos;t have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link to={"/auth/signup"}> Sign Up</Link>
     </div>
   );
 }

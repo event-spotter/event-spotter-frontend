@@ -138,7 +138,7 @@ function SignupPage() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p className="mt-10 mb-2">Already have an account?</p>
-      <Link to={"/login"}> Log in</Link>
+      <Link to={"/auth/login"}> Log in</Link>
     </div>
   );
 }
