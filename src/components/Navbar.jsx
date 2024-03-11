@@ -5,7 +5,12 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 const API_URL = import.meta.env.VITE_API_URL;
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -14,18 +19,19 @@ function classNames(...classes) {
 export default function Example() {
   const { isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
   const [navigation, setNavigation] = useState([
-    { name: "Home", href: "/dashboard" },
+    { name: "Home", href: "/home" },
     { name: "Calendar", href: "/calendar" },
   ]);
  
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading) {
       if (isLoggedIn) {
         let privateNavigation = [
-          { name: "Home", href: "/dashboard" },
+          { name: "Home", href: "/home" },
           { name: "Calendar", href: "/calendar" },
           { name: "Logout", href: "/#" },
         ];
@@ -54,6 +60,12 @@ export default function Example() {
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
             <div className="relative flex h-16 items-center justify-between  ">
+            <div className="container-fluid">
+        <NavLink to="/" 
+        className="flex font-bold text-2xl font-serif text-yellow-500 hover:text-yellow-400  " href="#">
+          Event Spotter
+        </NavLink>
+        </div>
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -75,8 +87,8 @@ export default function Example() {
                         key={item.name}
                         className={classNames(
                           location.pathname === item.href
-                            ? "bg-red-900 text-yellow-400"
-                            : "text-yellow-500 hover:bg-red-800 hover:text-yellow-300",
+                            ? "bg-yellow-500 text-sky-800"
+                            : "text-yellow-500 hover:bg-yellow-400 hover:text-sky-700",
                           "rounded-md px-5 py-2 text-sm font-extrabold  font-sans "
                         )}
                         onClick={item.name === 'Logout'? logOutUser : undefined}
@@ -134,15 +146,17 @@ export default function Example() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <NavLink
+                            to="#myFavoritesPage"
+                            key="profile-favorites"
+                         
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             My Favorites
-                          </a>
+                            </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>

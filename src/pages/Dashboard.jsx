@@ -31,7 +31,7 @@ function Dashboard() {
     <div className="relative min-h-screen flex items-center justify-center">
       <img
         src={BackgroundImage}
-        className="relative w-full h-[65rem] text-white flex flex-col items-center justify-center left-0;
+        className="relative w-full h-[58rem] text-white flex flex-col items-center justify-center left-0;
          center/cover no-repeat"
         // className="w-full h-1/6 object-cover"
         alt="Background"
@@ -41,12 +41,12 @@ function Dashboard() {
         <div className="text-5xl leading-relaxed">Have the joy</div>
       </div>
       </div>
-      <section className="bg-sky-900 py-6 text-center">
+      <section className="py-6 text-center">
         <div>
-          <h2 className="text-3xl font-bold mb-4">
+          <h1 className="text-4xl text-sky-900 font-bold mb-4 mt-5">
             Find Events Waiting for You
-          </h2>
-          <p className="text-lg">
+          </h1>
+          <p className="text-lg text-sky-900">
             Discover all the events for a unique experience.
           </p>
         </div>

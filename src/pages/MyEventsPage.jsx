@@ -146,6 +146,7 @@ function MyEventsPage() {
 
   return (
     <>
+    <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center"> My Events</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
         {events.map((event, index) => renderEventCard(event, index, false))}
       </div>

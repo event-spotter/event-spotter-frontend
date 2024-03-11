@@ -20,6 +20,8 @@ import Footer from "./components/Footer";
 import IsPrivate from "./components/IsPrivate";
 import ProfilePage from "./pages/ProfilePage";
 import MyEventsPage from "./pages/MyEventsPage";
+import MyFavoritesPage from "./pages/MyFavoritesPage"
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
         <Route path="/addArtist" element={<AddArtist />} />
         <Route path="/profile" element={ <IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/myEventsPage" element={ <IsPrivate><MyEventsPage /></IsPrivate>} />
+        <Route path="/myFavoritesPage" element={ <IsPrivate><MyFavoritesPage /></IsPrivate>} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
       </Routes>
 

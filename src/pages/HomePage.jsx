@@ -1,3 +1,4 @@
+
 import ExploreEvents from "../assets/explore_events.jpg";
 import CreateEvent from "../assets/create_event.jpg";
 import ExploreArtists from "../assets/explore_artists.jpg";
@@ -52,3 +53,52 @@ return (
 }
 
 export default HomePage;
+
+
+
+
+/*
+import "../App.css";
+import itinerariesPic from '../assets/explore_events.jpg'
+import plan from '../assets/explore_artists.jpg'
+import travelTips from '../assets/create_event.jpg'
+import ComplexButton from "../components/ComplexButton";
+import {Link} from 'react-router-dom'
+
+function Home() {
+  return (
+    <div style={{flex:1}}>
+
+      <div style={{height: '34%'}}>
+        <Link to='/itineraries'>
+          <ComplexButton 
+            title='Explore itineraries'
+            imageUrl={itinerariesPic}
+          />
+        </Link>
+      </div>
+
+      <div style={{height: '33%'}}>
+      <Link to='/new-itinerary'>
+        <ComplexButton 
+          title='Create an itinerary'
+          imageUrl={plan}
+        />
+      </Link>
+      </div>
+
+      <div style={{height: '33%'}}>
+      <Link to='/traveltips'>
+        <ComplexButton 
+          title='Explore travel tips'
+          imageUrl={travelTips}
+        />
+      </Link>
+      </div>
+
+    </div>
+  );
+}
+
+export default Home;
+*/
