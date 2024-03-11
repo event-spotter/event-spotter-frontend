@@ -4,6 +4,7 @@ import profileIcon from "../assets/profile-icon.png";
 import loadingGif from "../assets/loading.gif";
 import { AuthContext } from "../context/auth.context";
 import { Button } from "../components/ui/button";
+import { Link } from "react-router-dom";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
@@ -151,10 +152,26 @@ function ProfilePage() {
         </div>
 
         <div className="flex justify-center py-10 mt-2.5 mx-5 ">
+        <Link to={`/myEventsPage`}>
           <Button variant="button" size="lg">
              My Events
           </Button>
+          </Link>
         </div>
+
+
+        {/* <div>
+              
+                <button
+                  className="bg-[#0369a1] text-white cursor-pointer font-semibold text-[1em] ml-0 mr-[30px] mt-[30px] mb-0 p-[1em] rounded-md border-[none];
+                            font-family: inherit"
+                >
+                  Edit Event
+                </button>
+           
+            </div> */}
+
+
         </div>
     </div>
   );
