@@ -22,7 +22,7 @@ function AuthProviderWrapper(props) {
     // check if token exists in the localStorage
     if (storedToken) {
       axios
-        .get(`${API_URL}/auth/verify`, {
+        .get(`${API_URL}/auth/profile`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
@@ -73,6 +73,7 @@ function AuthProviderWrapper(props) {
         authenticateUser,
         logOutUser,
         authError,
+        setUser
       }}
     >
       {props.children}

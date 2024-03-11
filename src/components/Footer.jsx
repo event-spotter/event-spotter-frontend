@@ -10,10 +10,10 @@ function Footer() {
         <p className="text-sm text-white">
             Senay Asikoglu
           </p>
-          <a href="https://www.linkedin.com/in/melanie-schiffner-525b8aa2/">
+          <a href="https://www.linkedin.com/in/senayasikoglu/">
             <FaLinkedin style={{ color: "#eab308", fontSize: "20px"}}  />
           </a> 
-          <a href="https://github.com/MelSchiffner">
+          <a href="https://github.com/senayasikoglu">
             <FaGithub style={{ color: "#eab308", fontSize: "20px"}}  />
           </a>
         </div>

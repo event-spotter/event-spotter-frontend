@@ -17,6 +17,8 @@ import EventDetails from "./pages/EventDetailsPage";
 import EditEventPage from "./pages/EditEventPage";
 import AddArtist from "./components/AddArtist";
 import Footer from "./components/Footer";
+import IsPrivate from "./components/IsPrivate";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
         <Route path="/addEvent" element={<AddEvent />} />
         <Route path="/artists" element={<ArtistListPage />} />
         <Route path="/addArtist" element={<AddArtist />} />
+        <Route path="/profile" element={ <IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
       </Routes>
 
