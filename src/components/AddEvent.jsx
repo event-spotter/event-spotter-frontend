@@ -66,7 +66,7 @@ function AddEvent() {
       title,
       artist: selectedArtist || null,
       description,
-      category: category,
+      category: category || null,
       location,
       date,
     };
