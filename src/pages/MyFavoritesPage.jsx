@@ -1,76 +1,141 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardFooter } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { FaTrashCan } from "react-icons/fa6";
+import { VscHeartFilled } from "react-icons/vsc";
+import { AuthContext } from "../context/auth.context";
 
 const FavoritesPage = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
+  const { user } = useContext(AuthContext);
+
+  const [events, setEvents] = useState([]); 
+  const storedToken = localStorage.getItem("authToken");
 
 
-  let favList = JSON.parse(localStorage.getItem("favorites"));
-  const [favorites, setFavorites] = useState(favList!=null ? favList : [] );
-
-
-
-  const removeFromFavorites = (event) => {
-     if (favorites.findIndex((favorite) => favorite.id === event._id) > -1) {
-        console.log("removing...");
-        let newfavList = favorites.filter(
-          (favorite) => favorite._id != event._id
-        );
-        setFavorites(newfavList);
-        localStorage.setItem("favorites", JSON.stringify(newfavList));
-    }  
+  const getMyFavorites = () => {
+    axios
+      .get(`${API_URL}/api/events/favorites`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-   
+
+  useEffect(() => {
+
+    console.log(user);
+    getMyFavorites();
+  }, []);
+
+  const deleteEvent = (eventId) => {
+    axios
+      .delete(`${API_URL}/api/events/${eventId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        const newEvent = events.filter((eventObj) => eventObj._id !== eventId);
+        setEvents(newEvent);
+        setFilteredEvents(newEvent);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const renderEventCard = (event, index, isNewEvent = false) => (
+    <div
+      key={`${event.id}-${index}`}
+      className="flex flex-col items-center my-8 mx-10"
+    >
+      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
+        <CardContent className="flex flex-col justify-start items-center gap-10">
+          {isNewEvent ? (
+            <Link
+              to="/addEvent"
+              className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200 m-2"
+            >
+              <span className="flex justify-center text-8xl text-gray-500">
+                +
+              </span>
+            </Link>
+          ) : (
+            <img
+              className="m-2  radius-2"
+              src={event.image}
+              alt={event.title}
+            />
+          )}
+          <div className="flex flex-col text-center">
+            {isNewEvent ? (
+              <span className="text-2xl font-semibold">Create New Event</span>
+            ) : (
+              <>
+                <span className="text-xl font-semibold">{event.title}</span>
+                <span className="text-lg">{event.category}</span>
+              </>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-center items-center mb-1">
+          <div className="flex">
+            {isNewEvent ? (
+              <Link to="/addEvent">
+                <Button variant="button" className="mt-4">
+                  Create
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to={`/events/${event._id}`}>
+                  <Button variant="button" className="mx-1">
+                    See details
+                  </Button>
+                </Link>
+
+                <Button
+                  variant="button"
+                  className="mx-1"
+                  onClick={() => {
+                    addToFavorites(event._id);
+                  }}
+                >
+                  <VscHeartFilled className="text-md" />
+                </Button>
+
+                <Button
+                  variant="button"
+                  className="mx-1"
+                  onClick={() => {
+                    deleteEvent(event._id);
+                  }}
+                >
+                  <FaTrashCan className="text-md" />
+                </Button>
+              </>
+            )}
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  );
 
   return (
     <>
-      <div className="DestinationsList">
-        {favorites.length === 0 ? (
-          <h2> <i> Favorites List is empty </i></h2>
-        ) : (
-          favorites.map((obj) => {
-            return (
-              <div className="destination-card" key={obj.id}>
-                <div>
-                  <Link to={`/destinations/${obj.id}`}>
-                    <div className="destination-title-container">
-                      <svg
-                        className="location-tag"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512"
-                      >
-                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-                      </svg>
-                      <h2 className="destination-title">{obj.destination}</h2>
-                    </div>
-                    <img className="item-img" src={obj.image} />
-                  </Link>
-                </div>
-
-                <div className="company-card-buttons-wrap">
-                  <p className="destination-description">{obj.description} </p>
-                  <button
-                    onClick={() => {
-                      removeFromFavorites(obj);
-                    }}
-                  >
-                    <svg
-                      className="like-tag"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            );
-          })
-        )}
+    <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center"> My Favorites</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
+        {events.map((event, index) => renderEventCard(event, index, false))}
       </div>
     </>
   );
+   
 };
 
 export default FavoritesPage;

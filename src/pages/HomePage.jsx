@@ -2,6 +2,8 @@
 import ExploreEvents from "../assets/explore_events.jpg";
 import CreateEvent from "../assets/create_event.jpg";
 import ExploreArtists from "../assets/explore_artists.jpg";
+import HandsUp from "../assets/hands-up.jpg";
+import Events from "../assets/dashboard_bg.jpg";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -11,7 +13,7 @@ return (
     <div className="relative">
     <div className="relative inset-0 flex items-center justify-center">
       <img
-        src={ExploreEvents}
+        src={ CreateEvent}
         className="object-cover w-full h-52"
         alt="Background"
       />
@@ -22,7 +24,7 @@ return (
 
       <div className="relative inset-0 flex items-center justify-center">
       <img
-        src={CreateEvent}
+        src={HandsUp}
         className="object-cover w-full h-52"
         alt="Background"
       />

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { FaTrashCan } from "react-icons/fa6";
 import { VscHeartFilled } from "react-icons/vsc";
+import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 function EventListPage() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -12,6 +14,9 @@ function EventListPage() {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const {isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const getAllEvents = () => {
     axios
@@ -33,6 +38,7 @@ function EventListPage() {
   }, [events]);
 
   const storedToken = localStorage.getItem("authToken");
+
   const deleteEvent = (eventId) => {
     axios
       .delete(`${API_URL}/api/events/${eventId}`, {
@@ -45,37 +51,35 @@ function EventListPage() {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage(error);
       });
   };
 
+  const addToFavorites = (eventId) => {
+    axios
+      .get(`${API_URL}/api/users/favorites/${eventId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("response : ", response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-
-  
-    let newList = JSON.parse(localStorage.getItem("favorites"));
-  
-    const [favorites, setFavorites] = useState(newList != null ? newList : []);
-  
-    const addToFavorites = (event) => {
-      if (favorites
-          .findIndex(
-              (favorite) => favorite.id === event._id) == -1) 
-      {
-        console.log("adding...");
-  
-        const newStateData = [...favorites, event];
-  
-        setFavorites(newStateData);
-        localStorage.setItem("favorites", JSON.stringify(newStateData));
-      } else {
-        console.log("removing...");
-        let newfavList = favorites.filter(
-          (favorite) => favorite.id != event._id
-        );
-        setFavorites(newfavList);
-        localStorage.setItem("favorites", JSON.stringify(newfavList));
-      }
-    };
-  
+  const removeFromFavorites = (eventId) => {
+    axios
+      .delete(`${API_URL}/api/users/favorites/${eventId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log("response : ", response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
@@ -99,7 +103,9 @@ function EventListPage() {
               to="/addEvent"
               className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200 m-2"
             >
-              <span className="flex justify-center text-8xl text-gray-500">+</span>
+              <span className="flex justify-center text-8xl text-gray-500">
+                +
+              </span>
             </Link>
           ) : (
             <img
@@ -134,28 +140,26 @@ function EventListPage() {
                     See details
                   </Button>
                 </Link>
-
+                
                 <Button
-                  variant="button" className="mx-1"
-                  onClick={() => {
-                    addToFavorites(event._id);
+                  variant="button"
+                  className="mx-1"
+                  onClick={() => { isLoggedIn ?
+                    addToFavorites(event._id) : navigate("/auth/login")
                   }}
                 >
                   <VscHeartFilled className="text-md" />
-                </Button>
-
-
+                </Button> 
+                 
                 <Button
-                  variant="button" className="mx-1"
+                  variant="button"
+                  className="mx-1"
                   onClick={() => {
                     deleteEvent(event._id);
                   }}
                 >
                   <FaTrashCan className="text-md" />
                 </Button>
-
-
-
               </>
             )}
           </div>
@@ -226,6 +230,5 @@ function EventListPage() {
 }
 
 export default EventListPage;
-
 
 //  <img className="h-32 md:h-40 w-full rounded-lg object-contain pt-2" >
