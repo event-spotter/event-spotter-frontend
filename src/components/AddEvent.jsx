@@ -64,7 +64,7 @@ function AddEvent() {
   };
 
   const handleDateChange = (newDate) => {
-    setDate(newDate.toISOString()); 
+    setDate(newDate); 
   };
   
   const handleSubmit = (e) => {
@@ -192,6 +192,7 @@ function AddEvent() {
             <DatePicker
               selected={date}
               onSelect={(newDate) => setDate(newDate)}
+              onDateChanged={handleDateChange} 
             />
           </div>
 

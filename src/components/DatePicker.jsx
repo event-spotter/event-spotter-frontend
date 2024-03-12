@@ -1,5 +1,7 @@
 import * as React from "react";
+import { useParams } from "react-router-dom";
 import { format } from "date-fns";
+import axios from "axios";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "../lib/utils";
@@ -11,14 +13,32 @@ import {
   PopoverTrigger,
 } from "../components/ui/popover";
 
-function DatePicker() {
+function DatePicker({onDateChanged}) {
 
+  const API_URL = import.meta.env.VITE_API_URL;
+  const { eventId } = useParams();
   const [date, setDate] = React.useState(null);
 
-  const handleDateSelect = (selectedDate) => {
+  const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
-  
+
+    if (onDateChanged) {
+      onDateChanged(selectedDate);
+    }
   };
+
+  React.useEffect(() => {
+    if (eventId && date) {
+      axios
+      .put((`${API_URL}/api/events/${eventId}`), { date })
+      .then((response) => {
+        console.log("Event date updated successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating event date:", error);
+      });
+    }
+  }, [eventId, date, API_URL]);
 
   return (
     <Popover>
@@ -38,7 +58,7 @@ function DatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={handleDateSelect}
+          onSelect={handleDateChange}
           initialFocus
         />
       </PopoverContent>
