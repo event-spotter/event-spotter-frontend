@@ -6,7 +6,7 @@ import DatePicker from "../components/DatePicker";
 import { Link } from "react-router-dom";
 
 function AddArtist() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const MAX_DESCRIPTION_LENGTH = 100;
 

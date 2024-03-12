@@ -5,8 +5,8 @@ import BackgroundImage from "../assets/dashboard_background.jpg";
 import DashboardCarousel from "../components/DashboardCarousel"
 
 function Dashboard() {
-
-  const API_URL = "http://localhost:5005";
+  
+  const API_URL = import.meta.env.VITE_API_URL;
 
     const [events, setEvents] = useState([]);
 

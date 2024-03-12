@@ -6,7 +6,7 @@ import { Button } from "../components/ui/button";
 import { FaTrashCan } from "react-icons/fa6";
 
 function ArtistListPage() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [artists, setArtists] = useState([]);
   const [filteredArtists, setFilteredArtists] = useState([]);

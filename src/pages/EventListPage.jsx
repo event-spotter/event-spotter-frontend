@@ -7,7 +7,7 @@ import { FaTrashCan } from "react-icons/fa6";
 import { VscHeartFilled } from "react-icons/vsc";
 
 function EventListPage() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
