@@ -7,7 +7,6 @@ import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 
 
-// Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
 
 function ProfilePage() {

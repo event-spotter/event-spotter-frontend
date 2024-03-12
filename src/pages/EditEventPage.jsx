@@ -75,8 +75,14 @@ const EditEventPage = () => {
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
+  const handleDateChange = (newDate) => {
+    setDate(newDate); 
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formattedDate = date ? new Date(date).toISOString() : new Date().toISOString();
 
     const newDetails = {
       image,
@@ -210,9 +216,9 @@ const EditEventPage = () => {
           value={date ? format(new Date(date), "dd-MM-yyyy") : ""}
           readOnly />
           <DatePicker
-          
             selected={date}
             onSelect={(newDate) => setDate(newDate)}
+            onDateChanged={handleDateChange} 
           />
         </div>
 
