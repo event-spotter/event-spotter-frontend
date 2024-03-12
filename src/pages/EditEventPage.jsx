@@ -203,9 +203,14 @@ const EditEventPage = () => {
           />
         </div>
 
-        <div className="flex justify-between p-5">
+        <div className="flex justify-start p-4">
           <label className="text-md">Date: </label>
+          <input
+          className="mx-8"
+          value={date ? format(new Date(date), "dd-MM-yyyy") : ""}
+          readOnly />
           <DatePicker
+          
             selected={date}
             onSelect={(newDate) => setDate(newDate)}
           />
