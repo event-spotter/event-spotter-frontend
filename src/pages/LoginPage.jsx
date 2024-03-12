@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { Button } from "../components/ui/button";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -38,20 +39,19 @@ function LoginPage() {
   };
 
   return (
-    <div className="p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
-      <div className="flex justify-center bg-white items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300 shadow-sm"></div>
-
+    <div className="px-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+    <div className="flex justify-center items-center mb-4 pt-8 absolute  py-2 shadow-sm"></div>
       <form
         onSubmit={handleLoginSubmit}
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
       >
-        <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
+        <h3 className="text-2xl  text-sky-900 font-bold mb-6 sticky left-0">
           Login
         </h3>
 
         <label
           htmlFor="email"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+          className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
           Email
         </label>
@@ -67,7 +67,7 @@ function LoginPage() {
 
         <label
           htmlFor="password"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+          className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
           Password
         </label>
@@ -81,12 +81,11 @@ function LoginPage() {
           autoComplete="off"
         />
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
-        >
-          Log In
-        </button>
+<div className="flex justify-center py-3">
+            <Button variant="button" size="sm">
+              Log in
+            </Button>
+          </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

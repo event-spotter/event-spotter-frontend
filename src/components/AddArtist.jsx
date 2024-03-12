@@ -18,7 +18,6 @@ function AddArtist() {
   const [genre, setGenre] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   const handleFileUpload = (e) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
@@ -37,10 +36,9 @@ function AddArtist() {
       })
       .catch((err) => console.log("Error while uploading the file: ", err))
       .finally(() => {
-        setLoading(false)
-      })
+        setLoading(false);
+      });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,85 +67,92 @@ function AddArtist() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-sky-50 shadow-md border-solid border rounded-lg w-3/5 h-3/5 flex-col p-3"
-      >
-        <div className="flex p-2">
-          <div className="flex-col p-2 ">
-            <label className="text-md">Name*: </label>
-            <input
-              className="text-md w-full"
-              type="text"
-              name="name"
-              required
-              placeholder="Artist Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className="flex-col p-2 flex-grow">
-            <label className="text-md">Genre: </label>
-            <input
-              className="text-md w-full"
-              type="text"
-              name="genre"
-              required
-              placeholder="Rock"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-            />
-          </div>
+    <>
+      <section className="text-center">
+        <div>
+          <h1 className="text-4xl text-sky-900 font-bold mt-5">
+            Add an Artist
+          </h1>
         </div>
+      </section>
 
+      <div className="p-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+        <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
+        <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
+          <div className="flex p-2">
+            <div className="flex-col p-2 ">
+              <label className="text-md">Name*: </label>
+              <input
+                className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
+                type="text"
+                name="name"
+                required
+                placeholder="Artist Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
 
-        <div className="flex-col p-2">
-          <label className="text-md">Description (max 100 Characters): </label>
-          <textarea
-            className="text-md w-full resize-both"
-            type="text"
-            name="description"
-            required
-            placeholder="ABC"
-            value={description}
-            onChange={(e) => {
-              const newDescription = e.target.value;
-              if (newDescription.length <= MAX_DESCRIPTION_LENGTH) {
-                setDescription(newDescription);
-              }
-            }}
+            <div className="flex-col p-2 flex-grow">
+              <label className="text-md">Genre: </label>
+              <input
+                className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
+                type="text"
+                name="genre"
+                required
+                placeholder="Rock"
+                value={genre}
+                onChange={(e) => setGenre(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="flex-col p-2">
+            <label className="text-md">
+              Description (max 100 Characters):{" "}
+            </label>
+            <textarea
+              className="text-md w-full resize-both border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
+              type="text"
+              name="description"
+              required
+              placeholder="ABC"
+              value={description}
+              onChange={(e) => {
+                const newDescription = e.target.value;
+                if (newDescription.length <= MAX_DESCRIPTION_LENGTH) {
+                  setDescription(newDescription);
+                }
+              }}
             />
             <p className="text-sm text-gray-500 mt-1">
-            {`${description.length}/${MAX_DESCRIPTION_LENGTH} characters`}
-          </p>
-          {description.length > MAX_DESCRIPTION_LENGTH && (
-            <p className="text-sm text-red-500">
-              Description cannot exceed 100 characters.
+              {`${description.length}/${MAX_DESCRIPTION_LENGTH} characters`}
             </p>
-          )}
-          
-        </div>
-        
+            {description.length > MAX_DESCRIPTION_LENGTH && (
+              <p className="text-sm text-red-500">
+                Description cannot exceed 100 characters.
+              </p>
+            )}
+          </div>
+
           <div className="flex-col p-2">
             <label className="text-md">Image: </label>
             <input
-              className="text-md w-full object-contain"
+              className="text-md w-full object-contain border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               type="file"
               onChange={(e) => handleFileUpload(e)}
             />
           </div>
-        {loading && <p>Image is loading...</p>}
-      
+          {loading && <p>Image is loading...</p>}
 
-        <div className="flex justify-center py-3">
-          <Button variant="button" size="sm" disabled={loading}>
-            Add
-          </Button>
-        </div>
-      </form>
-    </div>
+          <div className="flex justify-center py-3">
+            <Button variant="button" size="sm" disabled={loading}>
+              Add
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 export default AddArtist;
