@@ -45,7 +45,7 @@ function LoginPage() {
         onSubmit={handleLoginSubmit}
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
       >
-        <h3 className="text-2xl  text-sky-900 font-bold mb-6 sticky left-0">
+        <h3 className="text-2xl text-sky-900 font-bold mb-6 sticky left-0">
           Login
         </h3>
 
@@ -89,9 +89,10 @@ function LoginPage() {
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+<div className="mb-4 text-left ml-3 text-l">
       <p className="mt-10 mb-2">Don&apos;t have an account yet?</p>
-      <Link to={"/auth/signup"}> Sign Up</Link>
+      <Link to={"/auth/signup"} className=" font-bold"> Sign Up</Link>
+      </div>
     </div>
   );
 }
