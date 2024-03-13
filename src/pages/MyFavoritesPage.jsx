@@ -11,8 +11,9 @@ const FavoritesPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { user } = useContext(AuthContext);
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]); 
   const storedToken = localStorage.getItem("authToken");
+
 
   const getMyFavorites = () => {
     axios
@@ -27,7 +28,7 @@ const FavoritesPage = () => {
       });
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     getMyFavorites();
   }, []);
 
@@ -46,6 +47,7 @@ const FavoritesPage = () => {
       });
   };
 
+
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
       key={`${event._id}-${index}`}
@@ -53,19 +55,22 @@ const FavoritesPage = () => {
       className="flex flex-col items-center my-8 mx-10"
     >
       <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
-        <CardContent className="flex flex-col justify-start items-center gap-10">
+      <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
           {isNewEvent ? (
             <Link
               to="/addEvent"
-              className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200 m-2"
+              className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
             >
-              <span className="flex justify-center text-8xl text-gray-500">
+              <span
+                className="flex justify-center items-center text-8xl text-gray-500"
+                style={{ height: "100%" }}
+              >
                 +
               </span>
             </Link>
           ) : (
             <img
-              className="m-2  radius-2"
+              className="h-56 w-full rounded-lg object-cover m-0"
               src={event.image}
               alt={event.title}
             />
@@ -75,8 +80,10 @@ const FavoritesPage = () => {
               <span className="text-2xl font-semibold">Create New Event</span>
             ) : (
               <>
-                <span className="text-xl font-semibold">{event.title}</span>
-                <span className="text-lg">{event.category}</span>
+                <span className="text-xl font-semibold pb-4">
+                  {event.title}
+                </span>
+                <span className="text-lg pb-4">{event.category}</span>
               </>
             )}
           </div>
@@ -118,15 +125,13 @@ const FavoritesPage = () => {
 
   return (
     <>
-      <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center">
-        {" "}
-        My Favorites
-      </h1>
+    <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center"> My Favorites</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
         {events.map((event, index) => renderEventCard(event, index, false))}
       </div>
     </>
   );
+   
 };
 
 export default FavoritesPage;

@@ -72,7 +72,7 @@ function EventListPage() {
       key={`${event.id}-${index}`}
       className="flex flex-col items-center my-10 mx-10"
     >
-      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-full" : "h-full"}`}>
+      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
         <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
           {isNewEvent ? (
             <Link
@@ -144,7 +144,7 @@ function EventListPage() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-0 gap-12 mx-8 mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-0 gap-10 mx-8 mt-20">
         <Button
           variant="button"
           className={`mt-4 md: m-2 ${

@@ -96,7 +96,9 @@ function ProfilePage() {
 
   return (
     <div>
-      <div className="StudentDetailsPage bg-gray-100 py-6 px-4  flex flex-col items-center mt-20 m-2.5">
+      <div className="StudentDetailsPage  py-6 px-4  flex flex-col items-center mt-20 ">
+        <div className="leading-[1.235] tracking-[0.00735em] text-[rgb(38,71,94)] 
+        font-bold text-[2rem] uppercase mt-2 mb-[0.35em] mx-0 "> user information</div>
         <div className="bg-white p-16 rounded-lg shadow-md mb-6 flex flex-col items-center">
           {userProfile && (
             <>
@@ -130,8 +132,8 @@ function ProfilePage() {
         </div>
       </div>
 
-      <div className=" flex flex-row  justify-center m-5 ">
-        <div className="flex justify-center py-10 mt-2.5 mx-5 h">
+      <div className=" flex flex-row  justify-center ">
+        <div className="flex justify-center py-10 mx-5 h">
           <Link to={`/myFavoritesPage`}>
             <Button variant="button" size="lg">
               My Favorites
@@ -139,7 +141,7 @@ function ProfilePage() {
           </Link>
         </div>
 
-        <div className="flex justify-center py-10 mt-2.5 mx-5 text-yellow-500 ">
+        <div className="flex justify-center py-10 mx-5 text-yellow-500 ">
           <Link to={`/myEventsPage`}>
             <Button variant="button" size="lg">
               My Events
