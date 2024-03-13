@@ -55,7 +55,8 @@ export default function Example() {
   if (isLoading) return <p>Loading ...</p>;
 
   return (
-    <Disclosure as="nav" className="bg-sky-900">
+    <div className="fixed top-0 w-full z-50 bg-sky-900">
+    <Disclosure as="nav">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
@@ -207,5 +208,6 @@ export default function Example() {
         </>
       )}
     </Disclosure>
+    </div>
   );
 }
