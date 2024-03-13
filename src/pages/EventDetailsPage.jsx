@@ -23,7 +23,7 @@ const EventDetails = () => {
 
 
   return (
-    <div className="px-[5vw] py-0 mt-[110px]">
+    <div className="px-[5vw] py-0 mt-[110px] mb-32">
       {event === null ? (
         <p>Loading...</p>
       ) : (
