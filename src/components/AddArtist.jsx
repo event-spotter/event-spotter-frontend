@@ -20,7 +20,6 @@ function AddArtist() {
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
-
     if (!file) {
       return;
     }
@@ -72,7 +71,17 @@ function AddArtist() {
         setGenre("");
         navigate("/artists");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.response && error.response.status === 500) {
+          if (error.response.data.code === 11000 && error.response.data.keyPattern.name === 1) {
+            alert("Error creating a new artis");
+          } else {
+            alert("Artist with this name already exists!t");
+          }
+        } else {
+          console.log(error);
+        }
+      });
   };
 
   return (

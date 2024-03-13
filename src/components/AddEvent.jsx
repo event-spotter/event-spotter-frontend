@@ -127,7 +127,7 @@ function AddEvent() {
         <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
           <div className="flex-col p-2 flex-grow">
             <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">
-              Title*:{" "}
+              Title:{" "}
             </label>
             <input
               className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
@@ -142,7 +142,7 @@ function AddEvent() {
 
           <div className="flex-col p-2 flex-grow">
             <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">
-              Location*:{" "}
+              Location:{" "}
             </label>
             <input
               className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
