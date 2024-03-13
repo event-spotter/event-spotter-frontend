@@ -175,7 +175,7 @@ function EventListPage() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-0 gap-12 mx-8">
+      <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-0 gap-12 mx-8 mt-20">
         <Button
           variant="button"
           className={`mt-4 md: m-2 ${

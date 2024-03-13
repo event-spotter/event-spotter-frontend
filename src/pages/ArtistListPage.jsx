@@ -108,7 +108,7 @@ function ArtistListPage() {
   return (
     <>
    
-    <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
+    <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16 mt-20">
       <div className="col-span-3 md:col-span-1 mx-10">
         {renderArtistCard({}, 0, true)}
       </div>
