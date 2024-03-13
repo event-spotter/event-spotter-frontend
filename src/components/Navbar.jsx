@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -148,7 +147,7 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                           <NavLink
-                            to="#myFavoritesPage"
+                            to="myFavoritesPage"
                             key="profile-favorites"
                          
                             className={classNames(

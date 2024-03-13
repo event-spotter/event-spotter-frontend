@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { FaTrashCan } from "react-icons/fa6";
-import { VscHeartFilled } from "react-icons/vsc";
 import { AuthContext } from "../context/auth.context";
+import FavoritesButton from "../components/FavoritesButton";
 
 const FavoritesPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { user } = useContext(AuthContext);
 
-  const [events, setEvents] = useState([]); 
+  const [events, setEvents] = useState([]);
   const storedToken = localStorage.getItem("authToken");
-
 
   const getMyFavorites = () => {
     axios
@@ -29,8 +28,6 @@ const FavoritesPage = () => {
   };
 
   useEffect(() => {
-
-    console.log(user);
     getMyFavorites();
   }, []);
 
@@ -49,10 +46,10 @@ const FavoritesPage = () => {
       });
   };
 
-
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
-      key={`${event.id}-${index}`}
+      key={`${event._id}-${index}`}
+      id={`${event._id}-${index}`}
       className="flex flex-col items-center my-8 mx-10"
     >
       <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
@@ -100,15 +97,7 @@ const FavoritesPage = () => {
                   </Button>
                 </Link>
 
-                <Button
-                  variant="button"
-                  className="mx-1"
-                  onClick={() => {
-                    addToFavorites(event._id);
-                  }}
-                >
-                  <VscHeartFilled className="text-md" />
-                </Button>
+                <FavoritesButton eventId={event._id} index={index} />
 
                 <Button
                   variant="button"
@@ -129,13 +118,15 @@ const FavoritesPage = () => {
 
   return (
     <>
-    <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center"> My Favorites</h1>
+      <h1 className="flex text-4xl text-sky-900 font-bold mb-4 mt-5 justify-center">
+        {" "}
+        My Favorites
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
         {events.map((event, index) => renderEventCard(event, index, false))}
       </div>
     </>
   );
-   
 };
 
 export default FavoritesPage;

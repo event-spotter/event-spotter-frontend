@@ -4,18 +4,20 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { FaTrashCan } from "react-icons/fa6";
-import { VscHeartFilled } from "react-icons/vsc";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import FavoritesButton from "../components/FavoritesButton";
 
 function EventListPage() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [events, setEvents] = useState([]);
+
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const { isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
+  const { isLoading } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const getAllEvents = () => {
@@ -55,32 +57,6 @@ function EventListPage() {
       });
   };
 
-  const addToFavorites = (eventId) => {
-    axios
-      .get(`${API_URL}/api/users/favorites/${eventId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        console.log("response : ", response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const removeFromFavorites = (eventId) => {
-    axios
-      .delete(`${API_URL}/api/users/favorites/${eventId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        console.log("response : ", response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
     if (category === "All Events") {
@@ -97,16 +73,16 @@ function EventListPage() {
       className="flex flex-col items-center my-10 mx-10"
     >
       <Card className={`w-64 md:w-80 ${isNewEvent ? "h-full" : "h-full"}`}>
-        <CardContent 
-        className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
-      {/* //   className="basis-1/5 flex items-center bg-[color:var(--light-grey)] shadow-[#3c40434d_0_1px_2px,#3c404326_0_1px_3px_1px] max-h-[520px] flex-col rounded-lg
-      // "> */}
+        <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
           {isNewEvent ? (
             <Link
               to="/addEvent"
               className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
             >
-              <span className="flex justify-center items-center text-8xl text-gray-500" style={{ height: "100%" }} >
+              <span
+                className="flex justify-center items-center text-8xl text-gray-500"
+                style={{ height: "100%" }}
+              >
                 +
               </span>
             </Link>
@@ -122,7 +98,9 @@ function EventListPage() {
               <span className="text-2xl font-semibold">Create New Event</span>
             ) : (
               <>
-                <span className="text-xl font-semibold pb-4">{event.title}</span>
+                <span className="text-xl font-semibold pb-4">
+                  {event.title}
+                </span>
                 <span className="text-lg pb-4">{event.category}</span>
               </>
             )}
@@ -144,17 +122,7 @@ function EventListPage() {
                   </Button>
                 </Link>
 
-                <Button
-                  variant="button"
-                  className="mx-1"
-                  onClick={() => {
-                    isLoggedIn
-                      ? addToFavorites(event._id)
-                      : navigate("/auth/login");
-                  }}
-                >
-                  <VscHeartFilled className="text-md" />
-                </Button>
+                <FavoritesButton eventId={event._id} />
 
                 <Button
                   variant="button"
@@ -172,6 +140,7 @@ function EventListPage() {
       </Card>
     </div>
   );
+  if (isLoading) return <p>Loading ...</p>;
 
   return (
     <>
@@ -225,23 +194,21 @@ function EventListPage() {
         </Button>
       </div>
 
-         {/* Render "Create New Event" card */}
-         <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
-      <div className="col-span-3 md:col-span-1 mx-10">
-        {renderEventCard({}, 0, true)}
-      </div>
-
-      {/* Render other events */}
-      {filteredEvents.map((event, index) => (
-        <div key={index} className="col-span-3 md:col-span-1 mx-10">
-          {renderEventCard(event, index)}
+      {/* Render "Create New Event" card */}
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
+        <div className="col-span-3 md:col-span-1 mx-10">
+          {renderEventCard({}, 0, true)}
         </div>
-      ))}
-    </div>
+
+        {/* Render other events */}
+        {filteredEvents.map((event, index) => (
+          <div key={index} className="col-span-3 md:col-span-1 mx-10">
+            {renderEventCard(event, index)}
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
 export default EventListPage;
-
-//  <img className="h-32 md:h-40 w-full rounded-lg object-contain pt-2" >

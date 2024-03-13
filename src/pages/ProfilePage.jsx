@@ -96,8 +96,8 @@ function ProfilePage() {
 
   return (
     <div>
-      <div className="StudentDetailsPage bg-gray-100 py-6 px-4  flex flex-col items-center m-2.5">
-        <div className="bg-white p-10 rounded-lg shadow-md mb-6 flex flex-col items-center">
+      <div className="StudentDetailsPage bg-gray-100 py-6 px-4  flex flex-col items-center mt-20 m-2.5">
+        <div className="bg-white p-16 rounded-lg shadow-md mb-6 flex flex-col items-center">
           {userProfile && (
             <>
               {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={student.image} alt="profile-photo" /> */}
@@ -130,7 +130,7 @@ function ProfilePage() {
         </div>
       </div>
 
-      <div className=" flex flex-row  justify-center m-5;">
+      <div className=" flex flex-row  justify-center m-5 ">
         <div className="flex justify-center py-10 mt-2.5 mx-5 h">
           <Link to={`/myFavoritesPage`}>
             <Button variant="button" size="lg">
@@ -139,7 +139,7 @@ function ProfilePage() {
           </Link>
         </div>
 
-        <div className="flex justify-center py-10 mt-2.5 mx-5 ">
+        <div className="flex justify-center py-10 mt-2.5 mx-5 text-yellow-500 ">
           <Link to={`/myEventsPage`}>
             <Button variant="button" size="lg">
               My Events

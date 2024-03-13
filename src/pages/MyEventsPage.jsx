@@ -47,25 +47,7 @@ function MyEventsPage() {
       });
   };
 
-  let newList = JSON.parse(localStorage.getItem("favorites"));
-
-  const [favorites, setFavorites] = useState(newList != null ? newList : []);
-
-  const addToFavorites = (event) => {
-    if (favorites.findIndex((favorite) => favorite.id === event._id) == -1) {
-      console.log("adding...");
-
-      const newStateData = [...favorites, event];
-
-      setFavorites(newStateData);
-      localStorage.setItem("favorites", JSON.stringify(newStateData));
-    } else {
-      console.log("removing...");
-      let newfavList = favorites.filter((favorite) => favorite.id != event._id);
-      setFavorites(newfavList);
-      localStorage.setItem("favorites", JSON.stringify(newfavList));
-    }
-  };
+ 
 
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
