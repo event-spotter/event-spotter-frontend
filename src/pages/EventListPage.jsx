@@ -94,10 +94,13 @@ function EventListPage() {
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
       key={`${event.id}-${index}`}
-      className="flex flex-col items-center my-8 mx-10"
+      className="flex flex-col items-center my-10 mx-10"
     >
       <Card className={`w-64 md:w-80 ${isNewEvent ? "h-96" : "h-96"}`}>
-        <CardContent className="flex flex-col justify-start items-center gap-6">
+        <CardContent 
+        className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
+      {/* //   className="basis-1/5 flex items-center bg-[color:var(--light-grey)] shadow-[#3c40434d_0_1px_2px,#3c404326_0_1px_3px_1px] max-h-[520px] flex-col rounded-lg
+      // "> */}
           {isNewEvent ? (
             <Link
               to="/addEvent"
@@ -109,7 +112,7 @@ function EventListPage() {
             </Link>
           ) : (
             <img
-              className="m-0 radius-2 rounded-lg h-48"
+              className="h-60 w-full rounded-lg  m-0"
               src={event.image}
               alt={event.title}
             />
