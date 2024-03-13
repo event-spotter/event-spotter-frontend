@@ -19,10 +19,20 @@ function AddArtist() {
   const [loading, setLoading] = useState(false);
 
   const handleFileUpload = (e) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const file = e.target.files[0];
+
+    if (!file) {
+      return;
+    }
+    const fileExtension = file.name.split(".").pop().toLowerCase();
+    const allowedFormats = ["jpg", "jpeg", "png"];
+
+    if (!allowedFormats.includes(fileExtension)) {
+      alert("Allowed formats: jpg, jpeg, png");
+      return;
+    }
+  
     const uploadData = new FormData();
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
 
     setLoading(true);
@@ -31,7 +41,6 @@ function AddArtist() {
       .post(`${API_URL}/api/upload`, uploadData)
       .then((response) => {
         console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
         setImage(response.data.imageUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err))

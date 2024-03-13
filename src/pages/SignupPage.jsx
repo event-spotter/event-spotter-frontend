@@ -23,10 +23,19 @@ function SignupPage() {
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleFileUpload = (e) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const file = e.target.files[0];
+
+    if (!file) {
+      return;
+    }
+    const fileExtension = file.name.split(".").pop().toLowerCase();
+    const allowedFormats = ["jpg", "jpeg", "png"];
+
+    if (!allowedFormats.includes(fileExtension)) {
+      alert("Allowed formats: jpg, jpeg, png");
+      return;
+    }
     const uploadData = new FormData();
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
 
     axios

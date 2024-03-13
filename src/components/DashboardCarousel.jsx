@@ -23,7 +23,7 @@ function DashboardCarousel({ events }) {
               className="pl-2 sm:w-1/2 md:basis-1/3 lg:w-2/4"
             >
               <div className="p-1">
-                <Card className="h-full w-full bg-sky-50">
+                <Card className="h-full w-full bg-sky-50 ml-2">
                   <CardContent className="flex flex-col gap-2 items-center justify-center">
                     <span className="pt-6 text-xl font-semibold">{event.title}</span>
                     <img
