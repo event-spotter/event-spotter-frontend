@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "../components/ui/card";
@@ -15,7 +15,7 @@ function EventListPage() {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const {isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
+  const { isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const getAllEvents = () => {
@@ -96,12 +96,12 @@ function EventListPage() {
       key={`${event.id}-${index}`}
       className="flex flex-col items-center my-8 mx-10"
     >
-      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
-        <CardContent className="flex flex-col justify-start items-center gap-10">
+      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-96" : "h-96"}`}>
+        <CardContent className="flex flex-col justify-start items-center gap-6">
           {isNewEvent ? (
             <Link
               to="/addEvent"
-              className="h-32 md:h-40 w-full rounded-lg object-cover p-3 bg-gray-200 m-2"
+              className="h-32 md:h-48 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
             >
               <span className="flex justify-center text-8xl text-gray-500">
                 +
@@ -109,7 +109,7 @@ function EventListPage() {
             </Link>
           ) : (
             <img
-              className="m-2  radius-2"
+              className="m-0 radius-2 rounded-lg h-48"
               src={event.image}
               alt={event.title}
             />
@@ -119,8 +119,8 @@ function EventListPage() {
               <span className="text-2xl font-semibold">Create New Event</span>
             ) : (
               <>
-                <span className="text-xl font-semibold">{event.title}</span>
-                <span className="text-lg">{event.category}</span>
+                <span className="text-xl font-semibold pb-4">{event.title}</span>
+                <span className="text-lg pb-4">{event.category}</span>
               </>
             )}
           </div>
@@ -140,17 +140,19 @@ function EventListPage() {
                     See details
                   </Button>
                 </Link>
-                
+
                 <Button
                   variant="button"
                   className="mx-1"
-                  onClick={() => { isLoggedIn ?
-                    addToFavorites(event._id) : navigate("/auth/login")
+                  onClick={() => {
+                    isLoggedIn
+                      ? addToFavorites(event._id)
+                      : navigate("/auth/login");
                   }}
                 >
                   <VscHeartFilled className="text-md" />
-                </Button> 
-                 
+                </Button>
+
                 <Button
                   variant="button"
                   className="mx-1"
@@ -220,11 +222,19 @@ function EventListPage() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
-        {filteredEvents.map((event, index) =>
-          renderEventCard(event, index, index === 0)
-        )}
+         {/* Render "Create New Event" card */}
+         <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
+      <div className="col-span-3 md:col-span-1 mx-10">
+        {renderEventCard({}, 0, true)}
       </div>
+
+      {/* Render other events */}
+      {filteredEvents.map((event, index) => (
+        <div key={index} className="col-span-3 md:col-span-1 mx-10">
+          {renderEventCard(event, index)}
+        </div>
+      ))}
+    </div>
     </>
   );
 }

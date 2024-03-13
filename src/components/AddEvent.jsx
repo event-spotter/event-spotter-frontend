@@ -68,7 +68,9 @@ function AddEvent() {
   };
 
   const handleSubmit = (e) => {
+    console.log('Form submitted');
     e.preventDefault();
+    if (loading) return; 
 
     const formattedDate = date
       ? new Date(date).toISOString()
@@ -101,6 +103,7 @@ function AddEvent() {
       })
       .catch((error) => console.log(error));
   };
+
 
   return (
     <>
@@ -171,6 +174,9 @@ function AddEvent() {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                 <option value="Select a category" disabled>
+                  Select a category
+                </option>
                 <option value="Concert">Concert</option>
                 <option value="Theatre">Theatre</option>
                 <option value="Comedy">Comedy</option>

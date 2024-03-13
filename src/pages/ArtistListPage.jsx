@@ -27,6 +27,7 @@ function ArtistListPage() {
   }, []);
 
   const storedToken = localStorage.getItem("authToken");
+  
   const deleteArtist = (artistId) => {
     axios
       .delete(`${API_URL}/api/artists/${artistId}`, {
