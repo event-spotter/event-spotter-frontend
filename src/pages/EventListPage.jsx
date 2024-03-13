@@ -96,7 +96,7 @@ function EventListPage() {
       key={`${event.id}-${index}`}
       className="flex flex-col items-center my-10 mx-10"
     >
-      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-96" : "h-96"}`}>
+      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-full" : "h-full"}`}>
         <CardContent 
         className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
       {/* //   className="basis-1/5 flex items-center bg-[color:var(--light-grey)] shadow-[#3c40434d_0_1px_2px,#3c404326_0_1px_3px_1px] max-h-[520px] flex-col rounded-lg
@@ -104,15 +104,15 @@ function EventListPage() {
           {isNewEvent ? (
             <Link
               to="/addEvent"
-              className="h-32 md:h-48 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
+              className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
             >
-              <span className="flex justify-center text-8xl text-gray-500">
+              <span className="flex justify-center items-center text-8xl text-gray-500" style={{ height: "100%" }} >
                 +
               </span>
             </Link>
           ) : (
             <img
-              className="h-60 w-full rounded-lg  m-0"
+              className="h-56 w-full rounded-lg object-cover m-0"
               src={event.image}
               alt={event.title}
             />

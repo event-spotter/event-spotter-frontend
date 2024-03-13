@@ -45,29 +45,49 @@ function ArtistListPage() {
       });
   };
 
-  const renderArtistCard = (artist, index) => {
-    return (
-      <div key={`${artist.id}-${index}`} className="flex flex-col items-center">
-        <Card className="w-full h-full">
-          <CardContent className="flex flex-col justify-start items-center gap-2">
+  const renderArtistCard = (artist, index, isNewArtist = false) => (
+      <div key={`${artist.id}-${index}`} className="flex flex-col items-center my-10 mx-10">
+
+      <Card className={`w-64 md:w-80 ${isNewArtist ? "h-full" : "h-full"}`}>
+          <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)]">
+          {isNewArtist ? (
+            <Link
+              to="/addArtist"
+              className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
+            >
+              <span className="flex justify-center items-center text-8xl text-gray-500" style={{ height: "100%" }} >
+                +
+              </span>
+            </Link>
+          ) : (
             <img
-              className="h-56 w-full rounded-lg object-cover p-3"
+              className="h-56 w-full rounded-lg object-cover m-0"
               src={artist.image}
               alt={artist.title}
             />
+            )}
             <div className="flex flex-col text-center">
-              <span className="text-xl font-semibold ">{artist.name}</span>
-              <span className="text-lg">{artist.genre}</span>
-              <span className="text-lg">{artist.description}</span>
+            {isNewArtist ? (
+              <span className="text-2xl font-semibold">Create New Artist</span>
+            ) : (
+              <>
+              <span className="text-xl font-semibold pb-4">{artist.name}</span>
+              <span className="text-lg pb-4">{artist.genre}</span>
+              <span className="text-lg pb-4">{artist.description}</span>
+              </>
+            )}
             </div>
           </CardContent>
-          <CardFooter className="flex  justify-center items-center">
+          <CardFooter className="flex justify-center items-center mb-1">
             <div className="flex">
-              {/* <Link to={`/artists/${artist._id}`}>
-                <Button variant="button" className="mx-2">
-                  See details
+            {isNewArtist ? (
+              <Link to="/addArtist">
+                <Button variant="button" className="mt-4">
+                  Create
                 </Button>
-              </Link> */}
+              </Link>
+            ) : (
+              <>
               <Button
                 variant="button"
                 onClick={() => {
@@ -76,32 +96,30 @@ function ArtistListPage() {
               >
                 <FaTrashCan className="text-md" />
               </Button>
+              </>
+            )}
             </div>
           </CardFooter>
         </Card>
       </div>
     );
-  };
+
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-8">
-        {/* Render the "Create New artist" card as the first card */}
-        <div>
-          <Card className="w-full h-full flex flex-col justify-center items-center text-center">
-            <CardContent className="flex flex-col">
-              <span className="text-2xl font-semibold">Create new artist</span>
-              <Link to="/addartist">
-                <Button variant="button" className="mt-4">
-                  Create
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-
-        {artists.map((artist, index) => renderArtistCard(artist, index))}
+   
+    <div className="grid grid-cols-1 md:grid-cols-3 mx-48 mb-16">
+      <div className="col-span-3 md:col-span-1 mx-10">
+        {renderArtistCard({}, 0, true)}
       </div>
+
+    
+      {artists.map((artist, index) => (
+        <div key={index} className="col-span-3 md:col-span-1 mx-10">
+          {renderArtistCard(artist, index)}
+        </div>
+      ))}
+   </div>
     </>
   );
 }

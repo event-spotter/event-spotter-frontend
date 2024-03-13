@@ -217,8 +217,8 @@ const EditEventPage = () => {
           </div>
 
           <div className="flex flex-col p-2">
-            <label className="text-sky-900  text-left ml-1 text-l font-bold">Date: </label>
-            <div className="flex row gap-8">
+            <label className="text-sky-900 text-left ml-1 text-l font-bold">Date: </label>
+            <div className="flex row gap-6">
             <input
              className="text-md border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               value={date ? format(new Date(date), "dd.MM.yyyy") : ""}

@@ -39,7 +39,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="p-6 pt-2 mb-32 mt-24 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+    <div className="p-6 pt-2 mb-32 mt-24 bg-[#d0e4ea] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
     <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
       <form
         onSubmit={handleLoginSubmit}
