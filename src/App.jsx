@@ -21,6 +21,7 @@ import IsPrivate from "./components/IsPrivate";
 import ProfilePage from "./pages/ProfilePage";
 import MyEventsPage from "./pages/MyEventsPage";
 import MyFavoritesPage from "./pages/MyFavoritesPage"
+import PageNotFound from "./pages/PageNotFound";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/myEventsPage" element={ <IsPrivate><MyEventsPage /></IsPrivate>} />
         <Route path="/myFavoritesPage" element={ <IsPrivate><MyFavoritesPage /></IsPrivate>} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       <Footer />
