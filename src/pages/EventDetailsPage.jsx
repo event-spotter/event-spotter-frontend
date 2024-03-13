@@ -30,7 +30,7 @@ const EventDetails = () => {
         <div className="flex gap-[50px] mb-[30px]">
           <div className="basis-6/12 ">
             <img
-              className="h-full w-full shadow-[#3c40434d_0_2px_2px,#3c404326_0_1px_3px_1px] rounded-[50px]"
+              className="h-full w-full object-cover shadow-[#3c40434d_0_2px_2px,#3c404326_0_1px_3px_1px] rounded-[50px]"
               src={event.image}
             />
           </div>
