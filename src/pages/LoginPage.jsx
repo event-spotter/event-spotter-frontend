@@ -39,8 +39,8 @@ function LoginPage() {
   };
 
   return (
-    <div className="px-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
-    <div className="flex justify-center items-center mb-4 pt-8 absolute  py-2 shadow-sm"></div>
+    <div className="p-6 pt-2 mb-32 mt-24 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+    <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
       <form
         onSubmit={handleLoginSubmit}
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
@@ -53,7 +53,7 @@ function LoginPage() {
           htmlFor="email"
           className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
-          Email
+          Email:
         </label>
         <input
           type="email"
@@ -69,7 +69,7 @@ function LoginPage() {
           htmlFor="password"
           className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
-          Password
+          Password:
         </label>
         <input
           type="password"

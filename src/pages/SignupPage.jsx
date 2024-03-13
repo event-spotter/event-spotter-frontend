@@ -56,13 +56,13 @@ function SignupPage() {
   };
 
   return (
-    <div className="px-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
-      <div className="flex justify-center items-center mb-4 pt-8 absolute  py-2 shadow-sm"></div>
+    <div className="p-6 pt-2 mb-32 mt-24 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+    <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
       <form
         onSubmit={handleSignupSubmit}
-        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
+        className="grid grid-cols-1 gap-4 overflow-y-auto mt-6 px-2"
       >
-        <h3 className="text-2xl  text-sky-900 font-bold mb-6 sticky left-0">
+        <h3 className="text-2xl text-sky-900 font-bold mb-6 sticky left-0">
           Sign Up
         </h3>
 
@@ -70,7 +70,7 @@ function SignupPage() {
           htmlFor="name"
           className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold"
         >
-          Name
+          Name:
         </label>
         <input
           type="text"
@@ -78,7 +78,7 @@ function SignupPage() {
           id="name"
           value={name}
           onChange={handleName}
-          className="border rounded p-2 w-full mb-6"
+          className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
           autoComplete="off"
         />
 
@@ -86,7 +86,7 @@ function SignupPage() {
           htmlFor="email"
           className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
-          Email
+          Email:
         </label>
         <input
           type="email"
@@ -94,7 +94,7 @@ function SignupPage() {
           id="email"
           value={email}
           onChange={handleEmail}
-          className="border rounded p-2 w-full mb-6"
+          className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
           autoComplete="off"
         />
 
@@ -102,10 +102,10 @@ function SignupPage() {
           htmlFor="image"
           className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
         >
-          Image
+          Image:
         </label>
         <input
-          className="border rounded p-2 w-full mb-6"
+           className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
           type="file"
           onChange={(e) => handleFileUpload(e)}
         />
@@ -114,7 +114,7 @@ function SignupPage() {
           htmlFor="password"
           className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold"
         >
-          Password
+          Password:
         </label>
         <input
           type="password"
@@ -122,7 +122,7 @@ function SignupPage() {
           id="password"
           value={password}
           onChange={handlePassword}
-          className="border rounded p-2 w-full mb-6"
+          className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
           autoComplete="off"
         />
 
@@ -134,9 +134,10 @@ function SignupPage() {
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+      <div className="mb-4 text-left ml-3 text-l">
       <p className="mt-10 mb-2 ">Already have an account?</p>
-      <Link to={"/auth/login"}> Log in</Link>
+      <Link to={"/auth/login"} className=" font-bold"> Log in</Link>
+    </div>
     </div>
   );
 }

@@ -121,16 +121,16 @@ const EditEventPage = () => {
     <>
       <section className="text-center">
         <div>
-          <h1 className="text-4xl text-sky-900 font-bold mt-5">Edit Event</h1>
+          <h1 className="text-4xl text-sky-900 font-bold mt-24">Edit Event</h1>
         </div>
       </section>
 
-      <div className="p-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+      <div className="p-6 pt-2 mb-32 mt-6 bg-[#d0e4ea] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
         <div className="flex justify-center items-center mb-4 pt-8 absolute  py-2 shadow-sm"></div>
         <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
-          <div className="flex p-2">
+      
             <div className="flex-col p-2 flex-grow">
-              <label className="text-md">Title*: </label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Title*: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -141,7 +141,7 @@ const EditEventPage = () => {
             </div>
 
             <div className="flex-col p-2 flex-grow">
-              <label className="text-md">Location*: </label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Location*: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -152,11 +152,9 @@ const EditEventPage = () => {
                 onChange={(e) => setLocation(e.target.value)}
               />
             </div>
-          </div>
 
-          <div className="flex p-2">
             <div className="flex-col p-2" style={{ flexBasis: "48%" }}>
-              <label className="text-md">Artist: </label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Artist: </label>
 
               {/* <input
             className="text-md w-full ml-4"
@@ -185,7 +183,7 @@ const EditEventPage = () => {
             </div>
 
             <div className="flex-col p-2" style={{ flexBasis: "50%" }}>
-              <label className="text-md">Category:</label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Category:</label>
 
               <select
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
@@ -193,16 +191,19 @@ const EditEventPage = () => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                  <option value="Select a category" disabled selected>
+                  Select a category
+                </option>
                 <option value="Concert">Concert</option>
                 <option value="Theatre">Theatre</option>
                 <option value="Comedy">Comedy</option>
                 <option value="Museum">Musem</option>
               </select>
             </div>
-          </div>
+        
 
-          <div className="flex-col p-2 ml-2">
-            <label className="text-md">Description: </label>
+          <div className="flex-col p-2">
+            <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Description: </label>
             <textarea
               className="resize-both text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               type="text"
@@ -214,11 +215,12 @@ const EditEventPage = () => {
             />
           </div>
 
-          <div className="flex justify-start p-4">
-            <label className="text-md">Date: </label>
+          <div className="flex flex-col p-2">
+            <label className="text-sky-900  text-left ml-1 text-l font-bold">Date: </label>
+            <div className="flex row gap-8">
             <input
-              className="mx-8"
-              value={date ? format(new Date(date), "dd-MM-yyyy") : ""}
+             className="text-md border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
+              value={date ? format(new Date(date), "dd.MM.yyyy") : ""}
               readOnly
             />
             <DatePicker
@@ -227,9 +229,10 @@ const EditEventPage = () => {
               onDateChanged={handleDateChange}
             />
           </div>
+          </div>
 
           <div className="flex-col p-2">
-            <label className="text-md">Image: </label>
+            <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Image: </label>
             <input
               className="object-contain text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               type="file"

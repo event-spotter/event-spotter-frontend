@@ -70,18 +70,17 @@ function AddArtist() {
     <>
       <section className="text-center">
         <div>
-          <h1 className="text-4xl text-sky-900 font-bold mt-5">
-            Add an Artist
+          <h1 className="text-4xl text-sky-900 font-bold mt-24">
+            Add Artist
           </h1>
         </div>
       </section>
 
-      <div className="p-8 mb-32 mt-8 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+      <div className="p-6 pt-2 mb-32 mt-6 bg-sky-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
         <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
         <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
-          <div className="flex p-2">
             <div className="flex-col p-2 ">
-              <label className="text-md">Name*: </label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Name*: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -94,7 +93,7 @@ function AddArtist() {
             </div>
 
             <div className="flex-col p-2 flex-grow">
-              <label className="text-md">Genre: </label>
+              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Genre: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -105,10 +104,10 @@ function AddArtist() {
                 onChange={(e) => setGenre(e.target.value)}
               />
             </div>
-          </div>
+         
 
           <div className="flex-col p-2">
-            <label className="text-md">
+            <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">
               Description (max 100 Characters):{" "}
             </label>
             <textarea
@@ -136,7 +135,7 @@ function AddArtist() {
           </div>
 
           <div className="flex-col p-2">
-            <label className="text-md">Image: </label>
+            <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Image: </label>
             <input
               className="text-md w-full object-contain border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               type="file"
