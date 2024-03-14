@@ -5,6 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import profileIcon from "../assets/profile-icon.png";
 
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -18,7 +19,7 @@ export default function Example() {
   const { isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
   const [navigation, setNavigation] = useState([
     { name: "Home", href: "/home" },
-    { name: "Calendar", href: "/calendar" },
+    { name: "Timeline", href: "/calendar" },
   ]);
  
 
@@ -30,7 +31,7 @@ export default function Example() {
       if (isLoggedIn) {
         let privateNavigation = [
           { name: "Home", href: "/home" },
-          { name: "Calendar", href: "/calendar" },
+          { name: "Timeline", href: "/calendar" },
           { name: "Logout", href: "/#" },
         ];
 
@@ -39,7 +40,7 @@ export default function Example() {
       } else {
         let anonNavigation = [
           { name: "Home", href: "/dashboard" },
-          { name: "Calendar", href: "/calendar" },
+          { name: "Timeline", href: "/calendar" },
           { name: "Sign Up", href: "/auth/signup" },
           { name: "Login", href: "/auth/login" },
         ];
@@ -107,12 +108,12 @@ export default function Example() {
                 <Menu as="div" className="relative ml-3  ">
 
                    <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative flex rounded-full bg-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={user.image}
+                        src={user.image ? user.image : profileIcon}
                         alt=""
                       />
                     </Menu.Button>

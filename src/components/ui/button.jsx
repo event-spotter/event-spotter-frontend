@@ -18,7 +18,6 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // button: "bg-sky-800 hover:bg-sky-950 text-white font-bold rounded",
         button:"max-w-full text-[0.8125rem] inline-flex items-center justify-center h-8 text-[rgba(0,0,0,0.87)] bg-[rgba(0,0,0,0.08)] hover:bg-transparent/20 whitespace-nowrap cursor-pointer no-underline align-middle box-border mr-2 p-0 rounded-2xl border-0",
         button2:"max-w-full text-[0.8125rem] inline-flex items-center justify-center h-8 text-[rgb(38,71,94)] bg-[rgb(255,189,89)] hover:opacity-80 whitespace-nowrap cursor-pointer no-underline align-middle box-border  mr-2 p-0 rounded-2xl border-0",
         carousel: "text-yellow-500 bg-sky-800 hover:text-yellow-400 hover:bg-sky-700 rounded-md px-5 py-2 text-sm font-extrabold font-sans ",
