@@ -31,7 +31,7 @@ export default function Example() {
       if (isLoggedIn) {
         let privateNavigation = [
           { name: "Home", href: "/home" },
-          { name: "Timeline", href: "/calendar" },
+          { name: "Timeline", href: "/timeline" },
           { name: "Logout", href: "/#" },
         ];
 
@@ -40,7 +40,7 @@ export default function Example() {
       } else {
         let anonNavigation = [
           { name: "Home", href: "/dashboard" },
-          { name: "Timeline", href: "/calendar" },
+          { name: "Timeline", href: "/timeline" },
           { name: "Sign Up", href: "/auth/signup" },
           { name: "Login", href: "/auth/login" },
         ];

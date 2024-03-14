@@ -22,6 +22,7 @@ import ProfilePage from "./pages/ProfilePage";
 import MyEventsPage from "./pages/MyEventsPage";
 import MyFavoritesPage from "./pages/MyFavoritesPage"
 import PageNotFound from "./pages/PageNotFound";
+import Timeline from "./pages/Timeline";
 
 
 
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/timeline" element={<Timeline />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/events/:eventId" element={<EventDetails />}></Route>
         <Route path="/auth/login" element={<LoginPage />} />
