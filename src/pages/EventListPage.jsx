@@ -55,11 +55,9 @@ function EventListPage() {
       .catch((error) => {
         if (error.response.status === 404) {
           alert("Event not found"); 
-        } else if (error.response.status === 401) {
-          alert("You are not the owner and are not allowed to delete this event."); 
-        } else {
+        }  else {
           console.log(error);
-          alert("An error occurred while deleting the event"); 
+          alert("You are not the owner and are not allowed to delete this event."); 
         }
       });
   };
