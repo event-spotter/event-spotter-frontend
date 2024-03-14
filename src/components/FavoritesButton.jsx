@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function FavoritesButton({eventId,index}) {
+function FavoritesButton({eventId,removeCard}) {
   const storedToken = localStorage.getItem("authToken");
 
   const [favorites, setFavorites] = useState([]);
@@ -35,7 +35,7 @@ function FavoritesButton({eventId,index}) {
     }
   };
 
-  const removeCard = () => document.getElementById(`${eventId}-${index}`).remove();
+  const deleteCard = () => document.getElementById(eventId).remove();
 
 
   const removeFromFavorites = (eventId) => {
@@ -46,8 +46,8 @@ function FavoritesButton({eventId,index}) {
       .then((response) => {
         setUser(response.data);
         setFavorites(response.data.favoriteEvents);
-        if(index){
-          removeCard()
+        if(removeCard){
+          deleteCard()
         }
       })
       .catch((error) => {

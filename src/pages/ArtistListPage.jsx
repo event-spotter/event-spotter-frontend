@@ -48,20 +48,23 @@ function ArtistListPage() {
   const renderArtistCard = (artist, index, isNewArtist = false) => (
       <div key={`${artist.id}-${index}`} className="flex flex-col items-center my-10 mx-10">
 
-      <Card className={`w-64 md:w-80 ${isNewArtist ? "h-full" : "h-full"}`}>
+      <Card className="w-80 md:w-80 h-full ">
           <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)]">
           {isNewArtist ? (
             <Link
               to="/addArtist"
-              className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
+              className="md:h-64 w-full h-full object-cover p-3 bg-gray-200 m-0"
             >
-              <span className="flex justify-center items-center text-8xl text-gray-500" style={{ height: "100%" }} >
+              <span
+                className="flex justify-center items-center text-8xl text-gray-500"
+                style={{ height: "100%" }}
+              >
                 +
               </span>
             </Link>
           ) : (
             <img
-              className="h-56 w-full rounded-lg object-cover m-0"
+              className="h-56 w-full object-cover m-0"
               src={artist.image}
               alt={artist.title}
             />

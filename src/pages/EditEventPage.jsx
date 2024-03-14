@@ -121,17 +121,17 @@ const EditEventPage = () => {
     <>
       <section className="text-center">
         <div>
-          <h1 className="text-4xl text-sky-900 font-bold mt-24">Edit Event</h1>
+          <h1 className="text-4xl text-[rgb(38,71,94)]  font-bold mt-24">Edit Event</h1>
         </div>
       </section>
 
 
-      <div className="p-6 pt-2 mb-32 mt-6 bg-[#d0e4ea] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+      <div className="p-6 pt-2 mb-32 mt-6 bg-[rgba(0,0,0,0.08)] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
       <div className="flex justify-center items-center mb-4 pt-8 absolute  py-2 shadow-sm"></div>
         <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
       
             <div className="flex-col p-2 flex-grow">
-              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Title*: </label>
+              <label className="text-[rgb(38,71,94)]   text-left ml-1 -mb-2 text-l font-bold">Title*: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -142,7 +142,7 @@ const EditEventPage = () => {
             </div>
 
             <div className="flex-col p-2 flex-grow">
-              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Location*: </label>
+              <label className="text-[rgb(38,71,94)]   text-left ml-1 -mb-2 text-l font-bold">Location*: </label>
               <input
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
                 type="text"
@@ -155,15 +155,7 @@ const EditEventPage = () => {
             </div>
 
             <div className="flex-col p-2" style={{ flexBasis: "48%" }}>
-              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Artist: </label>
-
-              {/* <input
-            className="text-md w-full ml-4"
-            type="text"
-            name="artist"
-            value={artist}
-            onChange={(e) => setTitle(e.target.value)}
-          /> */}
+              <label className="text-[rgb(38,71,94)]   text-left ml-1 -mb-2 text-l font-bold">Artist: </label>
 
               <select
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
@@ -184,7 +176,7 @@ const EditEventPage = () => {
             </div>
 
             <div className="flex-col p-2" style={{ flexBasis: "50%" }}>
-              <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Category:</label>
+              <label className="text-[rgb(38,71,94)]   text-left ml-1 -mb-2 text-l font-bold">Category:</label>
 
               <select
                 className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
@@ -204,7 +196,7 @@ const EditEventPage = () => {
         
 
           <div className="flex-col p-2">
-            <label className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold">Description: </label>
+            <label className="text-[rgb(38,71,94)]  text-left ml-1 -mb-2 text-l font-bold">Description: </label>
             <textarea
               className="resize-both text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
               type="text"
@@ -243,7 +235,7 @@ const EditEventPage = () => {
           {loading && <p>Image is loading...</p>}
 
           <div className="flex justify-center py-3">
-            <Button variant="button" size="sm">
+            <Button variant="button" size="md">
               Edit Event
             </Button>
           </div>
