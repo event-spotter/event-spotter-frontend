@@ -19,13 +19,14 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         button: "bg-sky-800 hover:bg-sky-950 text-white font-bold rounded",
+        carousel: "text-yellow-500 bg-sky-800 hover:text-yellow-400 hover:bg-sky-700 rounded-md px-5 py-2 text-sm font-extrabold font-sans ",
         delete:
           "bg-sky-600 hover:bg-red-800 text-white font-bold rounded text-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
         md: "h-9 rounded-md px-3",
-        sm: "h-9 rounded-md px-3",
+        sm: "h-7 rounded-md px-3 mt-8",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },
