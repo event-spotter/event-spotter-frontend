@@ -41,7 +41,12 @@ function ArtistListPage() {
         setFilteredArtists(newArtist);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 404) {
+          alert("Artist not found"); 
+        }  else {
+          console.log(error);
+          alert("You are not the owner and are not allowed to delete the Artist."); 
+        }
       });
   };
 

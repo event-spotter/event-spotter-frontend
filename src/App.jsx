@@ -33,7 +33,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
-     
         <Route path="/home" element={<HomePage />} />
         <Route path="/events/:eventId" element={<EventDetails />}></Route>
         <Route path="/auth/login" element={<LoginPage />} />
