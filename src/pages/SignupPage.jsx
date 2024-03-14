@@ -36,19 +36,19 @@ function SignupPage() {
   };
 
   return (
-    <div className="p-6 pt-2 mb-32 mt-24 bg-[#d0e4ea] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+    <div className="p-6 pt-2 mb-32 mt-24  bg-[rgba(0,0,0,0.08)] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
     <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
       <form
         onSubmit={handleSignupSubmit}
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-6 px-2"
       >
-        <h3 className="text-2xl text-sky-900 font-bold mb-6 sticky left-0">
+        <h3 className="text-2xl text-[rgb(38,71,94)] font-bold mb-6 sticky left-0">
           Sign Up
         </h3>
 
         <label
           htmlFor="name"
-          className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold"
+          className="text-[rgb(38,71,94)]  text-left ml-1 -mb-2 text-l font-bold"
         >
           Name:
         </label>
@@ -64,7 +64,7 @@ function SignupPage() {
 
         <label
           htmlFor="email"
-          className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
+          className="text-[rgb(38,71,94)] text-left ml-1 -mb-2 text-l font-bold"
         >
           Email:
         </label>
@@ -80,7 +80,7 @@ function SignupPage() {
 
         <label
           htmlFor="password"
-          className="text-sky-900  text-left ml-1 -mb-2 text-l font-bold"
+          className="text-[rgb(38,71,94)]  text-left ml-1 -mb-2 text-l font-bold"
         >
           Password:
         </label>
@@ -95,8 +95,8 @@ function SignupPage() {
         />
 
         <div className="flex justify-center py-3">
-          <Button variant="button" size="sm">
-            Edit Event
+          <Button variant="button" size="md">
+           Sign Up
           </Button>
         </div>
       </form>

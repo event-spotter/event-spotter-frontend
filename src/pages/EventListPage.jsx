@@ -73,12 +73,91 @@ function EventListPage() {
     }
   };
 
+
+  const renderEventCard = (event, index, isNewEvent = false) => (
+    <div
+      key={`${event.id}-${index}`}
+      className="flex flex-col items-center my-20 mx-10"
+    >
+      <div>
+      <Card className="w-80 md:w-80 h-full ">
+        <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)]">
+          {isNewEvent ? (
+            <Link
+              to="/addEvent"
+              className="md:h-64 w-full h-full object-cover p-3 bg-gray-200 m-0"
+            >
+              <span
+                className="flex justify-center items-center text-8xl text-gray-500"
+                style={{ height: "100%" }}
+              >
+                +
+              </span>
+            </Link>
+          ) : (
+            <img
+              className="h-64 w-full  object-cover m-0"
+              src={event.image}
+              alt={event.title}
+            />
+          )}
+          <div className="flex flex-col text-center">
+            {isNewEvent ? (
+              <span className="text-2xl font-semibold mb-10">Create New Event</span>
+            ) : (
+              <>
+                <span className="text-xl font-semibold pb-4">
+                  {event.title}
+                </span>
+                <span className="text-lg pb-4">{event.category}</span>
+              </>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-center items-center mb-1">
+          <div className="flex">
+            {isNewEvent ? (
+              <Link to="/addEvent">
+                <Button variant="button" className="mt-4">
+                  Create
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to={`/events/${event._id}`}>
+                  <Button variant="button" className="mx-1">
+                    See details
+                  </Button>
+                </Link>
+
+                <FavoritesButton eventId={event._id} />
+
+                <Button
+                  variant="button"
+                  className="mx-1"
+                  onClick={() => {
+                    deleteEvent(event._id);
+                  }}
+                >
+                  <FaTrashCan className="text-md" />
+                </Button>
+              </>
+            )}
+          </div>
+        </CardFooter>
+      </Card>
+      </div>
+    </div>
+  );
+  if (isLoading) return <p>Loading ...</p>; 
+
+/*
   const renderEventCard = (event, index, isNewEvent = false) => (
     <div
       key={`${event.id}-${index}`}
       className="flex flex-col items-center my-10 mx-10"
     >
-      <Card className={`w-64 md:w-80 ${isNewEvent ? "h-100" : "h-full"}`}>
+      <Card className={`w-64 md:w-60 ${isNewEvent ? "h-100" : "h-full"}`}>
         <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
           {isNewEvent ? (
             <Link
@@ -146,11 +225,11 @@ function EventListPage() {
       </Card>
     </div>
   );
-  if (isLoading) return <p>Loading ...</p>;
+  if (isLoading) return <p>Loading ...</p>;  */
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-0 gap-10 mx-8 mt-20">
+      <div>
         <Button
           variant="button"
           className={`mt-4 md: m-2 ${
