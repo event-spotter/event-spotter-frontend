@@ -23,19 +23,20 @@ function DashboardCarousel({ events }) {
               className="pl-2 sm:w-1/2 md:basis-1/3 lg:w-2/4"
             >
               <div className="p-1">
-                <Card className="h-full w-full bg-sky-50 ml-2">
+                <Card className="h-full w-full ml-2 bg-[color:var(--light-grey)]">
                   <CardContent className="flex flex-col gap-2 items-center justify-center">
-                    <span className="pt-6 text-xl font-semibold">{event.title}</span>
-                    <img
-                      className="h-40 w-full rounded-lg object-cover mt-2"
+                  <img
+                      className="h-40 w-full rounded-lg object-cover"
                       src={event.image}
                       alt={event.title}
                     />
+                    <span className="pt-6 text-xl font-semibold">{event.title}</span>
+                   
                     <span className="text-md font-semibold mt-8">
                       {event.location}
                     </span>
                     <Link to={`/events/${event._id}`}>
-                  <Button variant="carousel" size="sm" className="mx-8 mb-8">
+                  <Button variant="button" size="sm" className="mx-8 mb-8">
                     See details
                   </Button>
                 </Link>
