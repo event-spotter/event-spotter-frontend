@@ -43,19 +43,20 @@ function EventListPage() {
 
   const deleteEvent = (eventId) => {
     axios
-      .delete(`${API_URL}/api/events/${eventId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .delete(`${API_URL}/api/events/${eventId}`, 
+      {headers: { Authorization: `Bearer ${storedToken}` }})
       .then((response) => {
-        const newEvent = events.filter((eventObj) => eventObj._id !== eventId);
-        setEvents(newEvent);
-        setFilteredEvents(newEvent);
+        const remainingEvents = events.filter((eventObj) => eventObj._id !== eventId);
+        console.log(response)
+        console.log(remainingEvents)
+        setEvents(remainingEvents);
+        setFilteredEvents(remainingEvents);
       })
       .catch((error) => {
         if (error.response.status === 404) {
           alert("Event not found"); 
         } else if (error.response.status === 401) {
-          alert("YYou are not the owner and are not allowed to delete this event."); 
+          alert("You are not the owner and are not allowed to delete this event."); 
         } else {
           console.log(error);
           alert("An error occurred while deleting the event"); 
