@@ -47,7 +47,7 @@ const EventDetails = () => {
               </div>
             
             </div>
-            <div className="flex justify-between  bg-[rgba(0,0,0,0.08)] mt-4 mb-5 pt-5 pb-0 px-5 rounded-[10px]">
+            <div className="flex justify-between  bg-zinc-100 mt-4 mb-5 pt-5 pb-0 px-5 rounded-[10px]">
               <div className="basis-[70%]">
                 <h5 className="text-[large] tracking-wide font-semibold leading-[1.2] text-[color:var(--bs-heading-color)] mt-0 mb-2">
                   Artist
@@ -85,7 +85,7 @@ const EventDetails = () => {
             <div>
               <Link to={`/events/edit/${eventId}`}>
               <Button
-                  variant="button"
+                  variant="button2"
                 >
                   Edit Event
                   </Button>

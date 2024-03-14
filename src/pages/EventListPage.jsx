@@ -152,98 +152,23 @@ function EventListPage() {
   );
   if (isLoading) return <p>Loading ...</p>; 
 
-/*
-  const renderEventCard = (event, index, isNewEvent = false) => (
-    <div
-      key={`${event.id}-${index}`}
-      className="flex flex-col items-center my-10 mx-10"
-    >
-      <Card className={`w-64 md:w-60 ${isNewEvent ? "h-100" : "h-full"}`}>
-        <CardContent className="flex flex-col items-center gap-6 bg-[color:var(--light-grey)] ">
-          {isNewEvent ? (
-            <Link
-              to="/addEvent"
-              className="h-32 md:h-56 w-full rounded-lg object-cover p-3 bg-gray-200 m-0"
-            >
-              <span
-                className="flex justify-center items-center text-8xl text-gray-500"
-                style={{ height: "100%" }}
-              >
-                +
-              </span>
-            </Link>
-          ) : (
-            <img
-              className="h-56 w-full rounded-lg object-cover m-0"
-              src={event.image}
-              alt={event.title}
-            />
-          )}
-          <div className="flex flex-col text-center">
-            {isNewEvent ? (
-              <span className="text-2xl font-semibold">Create New Event</span>
-            ) : (
-              <>
-                <span className="text-xl font-semibold pb-4">
-                  {event.title}
-                </span>
-                <span className="text-lg pb-4">{event.category}</span>
-              </>
-            )}
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-center items-center mb-1">
-          <div className="flex">
-            {isNewEvent ? (
-              <Link to="/addEvent">
-                <Button variant="button" className="mt-4">
-                  Create
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <Link to={`/events/${event._id}`}>
-                  <Button variant="button" className="mx-1">
-                    See details
-                  </Button>
-                </Link>
-
-                <FavoritesButton eventId={event._id} />
-
-                <Button
-                  variant="button"
-                  className="mx-1"
-                  onClick={() => {
-                    deleteEvent(event._id);
-                  }}
-                >
-                  <FaTrashCan className="text-md" />
-                </Button>
-              </>
-            )}
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
-  );
-  if (isLoading) return <p>Loading ...</p>;  */
 
   return (
     <>
-      <div>
+      <div className="mt-28 flex justify-center">
         <Button
-          variant="button"
-          className={`mt-4 md: m-2 ${
-            selectedCategory === "All Events" && "bg-blue-500"
+          variant="button2" 
+          className={`mt-4 md: mr-8 ${
+            selectedCategory === "All Events" && "bg-sky-900 text-yellow-500"
           }`}
           onClick={() => handleCategoryFilter("All Events")}
         >
           All Events
         </Button>
         <Button
-          variant="button"
-          className={`mt-4 md: m-2 ${
-            selectedCategory === "Concert" && "bg-blue-500"
+          variant="button2" 
+          className={`mt-4 md: mr-8 ${
+            selectedCategory === "Concert" && "bg-sky-900 text-yellow-500"
           }`}
           onClick={() => handleCategoryFilter("Concert")}
         >
@@ -251,9 +176,9 @@ function EventListPage() {
         </Button>
 
         <Button
-          variant="button"
-          className={`mt-4 md: m-2 ${
-            selectedCategory === "Theatre" && "bg-blue-500"
+          variant="button2"
+          className={`mt-4 md: mr-8 ${
+            selectedCategory === "Theatre" && "bg-sky-900 text-yellow-500"
           }`}
           onClick={() => handleCategoryFilter("Theatre")}
         >
@@ -261,18 +186,18 @@ function EventListPage() {
         </Button>
 
         <Button
-          variant="button"
-          className={`mt-4 md: m-2 ${
-            selectedCategory === "Comedy" && "bg-blue-500"
+          variant="button2"
+          className={`mt-4 md:  mr-8 ${
+            selectedCategory === "Comedy" && "bg-sky-900 text-yellow-500"
           }`}
           onClick={() => handleCategoryFilter("Comedy")}
         >
           Comedy
         </Button>
         <Button
-          variant="button"
-          className={`mt-4 md: m-2 ${
-            selectedCategory === "Museum" && "bg-blue-500"
+          variant="button2"
+          className={`mt-4 md:  mr-8 ${
+            selectedCategory === "Museum" && "bg-sky-900 text-yellow-500"
           }`}
           onClick={() => handleCategoryFilter("Museum")}
         >

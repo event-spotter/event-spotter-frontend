@@ -53,7 +53,7 @@ function DashboardCarousel({ events }) {
 
 <div className="flex flex-col justify-center items-center text-center mb-6">
 <Link to={`/events`}>
-  <Button variant="button" className="mb-20">See all Events</Button>
+  <Button variant="button2" className="mb-20">See all Events</Button>
 </Link>
 </div>
 </>

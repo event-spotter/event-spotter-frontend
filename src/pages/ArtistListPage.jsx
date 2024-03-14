@@ -64,19 +64,19 @@ function ArtistListPage() {
             </Link>
           ) : (
             <img
-              className="h-56 w-full object-cover m-0"
+              className="h-64 w-full object-cover m-0"
               src={artist.image}
               alt={artist.title}
             />
             )}
             <div className="flex flex-col text-center">
             {isNewArtist ? (
-              <span className="text-2xl font-semibold">Create New Artist</span>
+              <span className="text-2xl font-semibold mb-12 pt-4">Create New Artist</span>
             ) : (
               <>
               <span className="text-xl font-semibold pb-4">{artist.name}</span>
-              <span className="text-lg pb-4">{artist.genre}</span>
-              <span className="text-lg pb-4">{artist.description}</span>
+              <span className="text-lg pb-2">{artist.genre}</span>
+              <span className="text-lg pb-2">{artist.description}</span>
               </>
             )}
             </div>

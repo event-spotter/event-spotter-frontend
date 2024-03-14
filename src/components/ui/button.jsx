@@ -20,13 +20,14 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // button: "bg-sky-800 hover:bg-sky-950 text-white font-bold rounded",
         button:"max-w-full text-[0.8125rem] inline-flex items-center justify-center h-8 text-[rgba(0,0,0,0.87)] bg-[rgba(0,0,0,0.08)] hover:bg-transparent/20 whitespace-nowrap cursor-pointer no-underline align-middle box-border mr-2 p-0 rounded-2xl border-0",
+        button2:"max-w-full text-[0.8125rem] inline-flex items-center justify-center h-8 text-[rgb(38,71,94)] bg-[rgb(255,189,89)] hover:opacity-80 whitespace-nowrap cursor-pointer no-underline align-middle box-border  mr-2 p-0 rounded-2xl border-0",
         carousel: "text-yellow-500 bg-sky-800 hover:text-yellow-400 hover:bg-sky-700 rounded-md px-5 py-2 text-sm font-extrabold font-sans ",
         delete:
           "bg-sky-600 hover:bg-red-800 text-white font-bold rounded text-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
-        md: "h-9 rounded-md px-3",
+        md: "h-9 rounded-md px-5 mt-8",
         sm: "h-7 rounded-md px-3 mt-8",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
