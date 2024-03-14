@@ -53,7 +53,11 @@ function EventListPage() {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage(error);
+        if (error.response && error.response.status === 401) {
+          alert("You are not the owner and are not allowed to delete this event.");
+        } else {
+          setErrorMessage("An error occurred while deleting the event.");
+        }
       });
   };
 
