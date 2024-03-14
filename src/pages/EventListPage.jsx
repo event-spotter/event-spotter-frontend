@@ -52,11 +52,13 @@ function EventListPage() {
         setFilteredEvents(newEvent);
       })
       .catch((error) => {
-        console.log(error);
-        if (error.response && error.response.status === 401) {
-          alert("You are not the owner and are not allowed to delete this event.");
+        if (error.response.status === 404) {
+          alert("Event not found"); 
+        } else if (error.response.status === 401) {
+          alert("YYou are not the owner and are not allowed to delete this event."); 
         } else {
-          setErrorMessage("An error occurred while deleting the event.");
+          console.log(error);
+          alert("An error occurred while deleting the event"); 
         }
       });
   };
