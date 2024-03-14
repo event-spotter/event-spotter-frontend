@@ -121,7 +121,7 @@ function AddEvent() {
         </div>
       </section>
 
-      <div className="p-6 pt-2 mb-32 mt-6 bg-[rgba(0,0,0,0.08)] rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
+      <div className="p-6 pt-2 mb-32 mt-6 bg-zinc-50 rounded-lg shadow-md flex flex-col h-3/5 relative w-full max-w-3xl mx-auto">
         <div className="flex justify-center items-center mb-4 pt-8 absolute py-2 shadow-sm"></div>
         <form onSubmit={handleSubmit} className="flex-col p-3 md:flex-row ">
           <div className="flex-col p-2 flex-grow">
@@ -236,7 +236,7 @@ function AddEvent() {
           {loading && <p>Image is loading...</p>}
 
           <div className="flex justify-center py-3">
-            <Button variant="button" size="md" disabled={loading}>
+            <Button variant="button2" size="md" disabled={loading}>
               Add
             </Button>
           </div>

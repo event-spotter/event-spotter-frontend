@@ -28,7 +28,10 @@ function ProfilePage() {
         })
         .then((response) => {
           setUserProfile(response.data);
-          setImage(response.data.image);
+          if(response.data.image){
+            setImage(response.data.image);
+          }
+          
           setLoading(false);
         })
         .catch((error) => {
@@ -135,7 +138,7 @@ function ProfilePage() {
       <div className=" flex flex-row  justify-center ">
         <div className="flex justify-center py-10 mx-5 h">
           <Link to={`/myFavoritesPage`}>
-            <Button variant="button" size="lg">
+            <Button variant="button2" size="lg">
               My Favorites
             </Button>
           </Link>
@@ -143,7 +146,7 @@ function ProfilePage() {
 
         <div className="flex justify-center py-10 mx-5 text-yellow-500 ">
           <Link to={`/myEventsPage`}>
-            <Button variant="button" size="lg">
+            <Button variant="button2" size="lg">
               My Events
             </Button>
           </Link>
