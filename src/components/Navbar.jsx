@@ -4,7 +4,6 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
@@ -54,7 +53,7 @@ export default function Example() {
   if (isLoading) return <p>Loading ...</p>;
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-sky-900">
+    <div className="fixed top-0 w-full z-50 bg-[rgb(38,71,94)]">
     <Disclosure as="nav">
       {({ open }) => (
         <>
