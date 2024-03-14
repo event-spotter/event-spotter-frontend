@@ -16,37 +16,8 @@ function SignupPage() {
 
   const handleName = (e) => setName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-  };
+  
   const handlePassword = (e) => setPassword(e.target.value);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) {
-      return;
-    }
-    const fileExtension = file.name.split(".").pop().toLowerCase();
-    const allowedFormats = ["jpg", "jpeg", "png"];
-
-    if (!allowedFormats.includes(fileExtension)) {
-      alert("Allowed formats: jpg, jpeg, png");
-      return;
-    }
-    const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
-
-    axios
-      .post(`${API_URL}/api/upload`, uploadData)
-      .then((response) => {
-        console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
-        setImage(response.data.imageUrl);
-      })
-      .catch((err) => console.log("Error while uploading the file: ", err));
-  };
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -105,18 +76,6 @@ function SignupPage() {
           onChange={handleEmail}
           className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
           autoComplete="off"
-        />
-
-        <label
-          htmlFor="image"
-          className="text-sky-900 text-left ml-1 -mb-2 text-l font-bold"
-        >
-          Image:
-        </label>
-        <input
-           className="text-md w-full border border-gray-300 bg-gray-50 p-2 rounded shadow-sm focus:ring-2 focus:ring-blue-200 focus:z-10 transform transition-transform duration-200 focus:translate-y-[-1px]"
-          type="file"
-          onChange={(e) => handleFileUpload(e)}
         />
 
         <label
