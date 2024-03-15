@@ -37,8 +37,8 @@ function Dashboard() {
         alt="Background"
       />
       <div className="absolute flex flex-col items-center text-center text-neutral-400 mt-8">
-        <div className="font-light font-mono text-6xl tracking-[-0.00833em] text-center text-inherit mb-16">Unlock Experiences</div>
-        <div className="font-normal font-mono tracking-wide text-2xl tracking-normal text-center text-inherit mb-96 ">Explore new horizons and craft unforgettable memories</div>
+        <div className="font-light font-mono text-5xl tracking-[-0.00833em] text-center text-inherit mb-16">Unlock Experiences</div>
+        <div className="font-normal font-mono tracking-wide text-2xl tracking-normal text-center text-inherit mb-96 ">Embark on adventures, make lasting memories</div>
       </div>
       </div>
       <section className="py-6 text-center">
