@@ -19,7 +19,7 @@ export default function Example() {
   const { isLoggedIn, isLoading, logOutUser, user } = useContext(AuthContext);
   const [navigation, setNavigation] = useState([
     { name: "Home", href: "/home" },
-    { name: "Timeline", href: "/calendar" },
+    { name: "Timeline", href: "/timeline" },
   ]);
  
 
