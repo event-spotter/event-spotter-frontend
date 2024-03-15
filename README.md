@@ -1,8 +1,29 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EventSpotter REACT
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About
+
+SPA frontend for event spotter app.
+
+- This repo implements the frontend (built with REACT).
+- A repository for with the backend (REST API) can be found here: https://github.com/event-spotter/eventSpotter-backend
+
+
+
+## Instructions
+
+To run in your computer, follow these steps:
+- clone 
+- install dependencies: `npm install`
+- create a `.env` file with the following environment variables
+  - ORIGIN, with the location of your frontend app (`ORIGIN= https://event-spotter.netlify.app`)
+- run the application: `npm run dev` or `npm start`
+
+
+<br/>
+
+
+## Demo
+
+A demo can be found here: https://event-spotter.netlify.app
