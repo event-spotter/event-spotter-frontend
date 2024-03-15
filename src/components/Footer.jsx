@@ -19,7 +19,7 @@ function Footer() {
         </div>
         <div className="flex gap-4">
         <p className="text-sm text-white">
-            Melanie Schiffner
+            Mel Schiffner
           </p>
           <a href="https://www.linkedin.com/in/melanie-schiffner-525b8aa2/">
             <FaLinkedin style={{ color: "#eab308", fontSize: "20px"}}  />
