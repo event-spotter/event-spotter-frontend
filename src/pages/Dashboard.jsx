@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import BackgroundImage from "../assets/dashboard_background.jpg";
+import BackgroundImage from "../assets/GirlWithBalloons.jpg";
 import DashboardCarousel from "../components/DashboardCarousel"
 
 function Dashboard() {
@@ -36,9 +36,9 @@ function Dashboard() {
         // className="w-full h-1/6 object-cover"
         alt="Background"
       />
-      <div className="absolute flex flex-col items-center justify-center text-center text-white">
-        <div className="font-light font-mono text-6xl leading-[1.2] tracking-[-0.00833em] text-center text-inherit m-0">Unlock Experiences</div>
-        <div className="font-normal font-mono tracking-wide text-2xl leading-[1.334] tracking-normal text-center text-inherit mt-12 mb-8 mx-0">Explore new horizons and craft unforgettable memories</div>
+      <div className="absolute flex flex-col items-center text-center text-neutral-400 mt-8">
+        <div className="font-light font-mono text-6xl tracking-[-0.00833em] text-center text-inherit mb-16">Unlock Experiences</div>
+        <div className="font-normal font-mono tracking-wide text-2xl tracking-normal text-center text-inherit mb-96 ">Explore new horizons and craft unforgettable memories</div>
       </div>
       </div>
       <section className="py-6 text-center">
