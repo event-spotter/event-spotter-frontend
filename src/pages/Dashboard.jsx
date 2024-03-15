@@ -37,8 +37,8 @@ function Dashboard() {
         alt="Background"
       />
       <div className="absolute flex flex-col items-center justify-center text-center text-white">
-        <div className="text-8xl align-top mt-6 mb-4">Are you ready?</div>
-        <div className="text-5xl leading-relaxed">Have the joy</div>
+        <div className="font-light font-mono text-6xl leading-[1.2] tracking-[-0.00833em] text-center text-inherit m-0">Unlock Experiences</div>
+        <div className="font-normal font-mono tracking-wide text-2xl leading-[1.334] tracking-normal text-center text-inherit mt-12 mb-8 mx-0">Explore new horizons and craft unforgettable memories</div>
       </div>
       </div>
       <section className="py-6 text-center">
@@ -47,7 +47,7 @@ function Dashboard() {
             Find Events Waiting for You
           </h1>
           <p className="text-lg text-sky-900">
-            Discover all the events for a unique experience.
+            Discover all the events for a unique experience
           </p>
         </div>
       </section>
